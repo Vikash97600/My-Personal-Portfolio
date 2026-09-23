@@ -1,6 +1,6 @@
 /* ==========================================================================
    VIKASH R. CHAURASIYA — PROFESSIONAL DEVELOPER PORTFOLIO
-   Design Tokens & Core Stylesheet (Pass 3 - Cinematic Motion & Polish)
+   Design Tokens & Core Stylesheet (Pass 4 - Responsive QA & Accessibility)
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
@@ -58,6 +58,13 @@ html {
     -webkit-font-smoothing: antialiased;
 }
 
+/* Prevent Horizontal Overflow */
+img, video, iframe, svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
 /* Imperceptible Animated Ambient Background */
 @keyframes ambientBackgroundShift {
     0% {
@@ -101,6 +108,16 @@ body.menu-open {
 }
 ::-webkit-scrollbar-thumb:hover {
     background: #2a3044;
+}
+
+/* Keyboard Focus Indicators */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--accent-purple);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
 }
 
 /* Global Container */
@@ -151,7 +168,7 @@ section {
 }
 
 .section-title {
-    font-size: clamp(2.5rem, 5vw, 5rem);
+    font-size: clamp(2.25rem, 5vw, 5rem);
     font-weight: 600;
     letter-spacing: -0.05em;
     line-height: 1.05;
@@ -205,6 +222,7 @@ a {
     transition: var(--transition);
     cursor: pointer;
     border: 1px solid transparent;
+
 }
 
 .btn .arrow {
@@ -258,6 +276,10 @@ a {
 .btn.small {
     padding: 8px 16px;
     font-size: 0.8rem;
+}
+
+.btn.full-width {
+    width: 100%;
 }
 
 /* Technology Pills */
@@ -470,7 +492,13 @@ a {
 @media (max-width: 991px) {
     .hero-grid {
         grid-template-columns: 1fr;
-        gap: 48px;
+        gap: 40px;
+    }
+    .hero-content {
+        order: 1;
+    }
+    .hero-image-container {
+        order: 2;
     }
 }
 
@@ -535,7 +563,7 @@ a {
 }
 
 .hero-title {
-    font-size: clamp(4rem, 8vw, 8rem);
+    font-size: clamp(2.75rem, 8vw, 8rem);
     font-weight: 600;
     line-height: 0.95;
     letter-spacing: -0.06em;
@@ -655,6 +683,12 @@ a {
     padding: 48px;
     margin-bottom: 40px;
     transition: border-color 300ms var(--ease-editorial), background 300ms var(--ease-editorial), transform 300ms var(--ease-editorial);
+}
+
+@media (max-width: 767px) {
+    .featured-project {
+        padding: 24px;
+    }
 }
 
 .featured-project:hover {
@@ -797,6 +831,12 @@ a {
     flex-direction: column;
     justify-content: space-between;
     flex: 1;
+}
+
+@media (max-width: 767px) {
+    .project-content {
+        padding: 24px;
+    }
 }
 
 .project-title {
@@ -1345,6 +1385,12 @@ a {
     padding: 36px;
 }
 
+@media (max-width: 767px) {
+    .contact-form {
+        padding: 24px;
+    }
+}
+
 .form-group {
     margin-bottom: 24px;
 }
@@ -1452,7 +1498,7 @@ a {
 }
 
 .case-study-title {
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-size: clamp(2.25rem, 5vw, 4.5rem);
     font-weight: 600;
     letter-spacing: -0.05em;
     line-height: 1.05;
@@ -1489,12 +1535,14 @@ a {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
-    padding: 28px;
+    padding: 24px;
     font-family: var(--font-mono);
-    font-size: 0.875rem;
-    line-height: 1.8;
+    font-size: 0.8rem;
+    line-height: 1.6;
     color: var(--text-secondary);
     overflow-x: auto;
+    max-width: 100%;
+    white-space: pre;
 }
 
 /* Accessibility / Reduced Motion */

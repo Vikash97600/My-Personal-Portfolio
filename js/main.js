@@ -37,6 +37,15 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    // Keyboard Escape closes mobile drawer
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && navLinks && navLinks.classList.contains('active')) {
+            if (hamburger) hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        }
+    });
+
     // ScrollSpy active link highlights
     function scrollSpy() {
         const currentScroll = window.scrollY + 140;
@@ -94,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function () {
             timelineObserver.observe(timelineElement);
         }
     } else {
-        // Fallback for browsers without IntersectionObserver
+        // Fallback for environments without IntersectionObserver
         revealElements.forEach(el => el.classList.add('is-visible'));
         if (timelineElement) timelineElement.classList.add('is-visible');
     }
@@ -161,11 +170,13 @@ document.addEventListener('DOMContentLoaded', function () {
             currentImageIndex = index;
             modalImage.src = images[currentImageIndex];
             modal.classList.add('active');
+            modal.setAttribute('aria-hidden', 'false');
             document.body.style.overflow = 'hidden';
         }
 
         function closeModal() {
             modal.classList.remove('active');
+            modal.setAttribute('aria-hidden', 'true');
             document.body.style.overflow = '';
         }
 
