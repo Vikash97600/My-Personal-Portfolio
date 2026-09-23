@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const navItems = document.querySelectorAll('.nav-links a');
     const sections = document.querySelectorAll('section');
 
-    // Sticky navbar on scroll
+    // Sticky navbar on scroll (>40px)
     window.addEventListener('scroll', function () {
         if (window.scrollY > 40) {
             if (navbar) navbar.classList.add('scrolled');
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // ScrollSpy active link highlights
     function scrollSpy() {
-        const currentScroll = window.scrollY + 120;
+        const currentScroll = window.scrollY + 140;
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.offsetHeight;
@@ -58,7 +58,41 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('scroll', scrollSpy);
 
     // ==========================================================================
-    // 2. LIGHTBOX GALLERY MODAL FOR RECOGNITION SECTION
+    // 2. PROJECT CATEGORY FILTERING (ALL, BACKEND, AI, FULL-STACK)
+    // ==========================================================================
+    
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const filterableProjects = document.querySelectorAll('[data-category]');
+
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', function () {
+            filterButtons.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+
+            const targetFilter = this.getAttribute('data-filter');
+
+            filterableProjects.forEach(project => {
+                const categories = project.getAttribute('data-category').split(' ');
+
+                if (targetFilter === 'all' || categories.includes(targetFilter)) {
+                    project.style.display = '';
+                    project.style.opacity = '1';
+                    project.style.transform = 'translateY(0)';
+                } else {
+                    project.style.opacity = '0';
+                    project.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        if (project.style.opacity === '0') {
+                            project.style.display = 'none';
+                        }
+                    }, 200);
+                }
+            });
+        });
+    });
+
+    // ==========================================================================
+    // 3. LIGHTBOX GALLERY MODAL FOR RECOGNITION SECTION
     // ==========================================================================
     
     const modal = document.getElementById('imageModal');

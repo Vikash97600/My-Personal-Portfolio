@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Blog Generator Case Study | Vikash R. Chaurasiya</title>
+    <meta name="description" content="Detailed engineering case study for AI Blog Generator — YouTube-to-Blog AI Content Pipeline.">
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Header Navigation -->
+    <nav class="navbar scrolled">
+        <div class="container">
+            <a href="../index.html#home" class="logo">VIKASH<span class="logo-dot">.</span></a>
+            <div class="nav-actions">
+                <a href="../index.html#work" class="back-link"><i class="fas fa-arrow-left"></i> BACK TO WORK</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Case Study Hero -->
+    <section class="case-study-hero">
+        <div class="container">
+            <a href="../index.html#work" class="back-link"><i class="fas fa-arrow-left"></i> BACK TO SELECTED WORK</a>
+            <span class="section-number">CASE STUDY // SECONDARY PROJECT</span>
+            <h1 class="case-study-title">AI Blog Generator</h1>
+            <p class="case-study-subtitle">YouTube-to-Blog AI Content Pipeline</p>
+
+            <div class="project-tech-tags" style="margin-bottom: 24px;">
+                <span class="pill">Python</span>
+                <span class="pill">Django</span>
+                <span class="pill">yt-dlp</span>
+                <span class="pill">AssemblyAI</span>
+                <span class="pill">OpenRouter LLM</span>
+            </div>
+
+            <div class="project-links">
+                <a href="https://github.com/Vikash97600/AI-BLOG-GENERATOR-USING-YOUTUBE-VIDEOS" target="_blank" class="btn primary">GITHUB REPOSITORY <span class="arrow">→</span></a>
+            </div>
+
+            <div class="featured-media-wrapper" style="margin-top: 40px;">
+                <img src="../assets/images/ai_blog.jpg" alt="AI Blog Generator Screenshot">
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="case-study-section">
+        <div class="container">
+            <span class="case-study-section-number">01 / OVERVIEW</span>
+            <h2 class="case-study-section-title">Problem & Solution</h2>
+
+            <div class="about-body">
+                <h3 style="color: var(--text-primary); margin-bottom: 12px; font-weight: 600;">The Problem</h3>
+                <p style="margin-bottom: 24px;">
+                    Repurposing long-form video content into written publications requires tedious manual transcription, formatting, translation, and summary synthesis.
+                </p>
+
+                <h3 style="color: var(--text-primary); margin-bottom: 12px; font-weight: 600;">The Solution</h3>
+                <p>
+                    AI Blog Generator is an automated Django pipeline that takes any public YouTube URL, extracts audio streams via `yt-dlp`, processes high-accuracy transcription through AssemblyAI, and uses OpenRouter LLM APIs to generate structured, formatted articles with multi-language translation, TTS audio generation, and PDF exports.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="case-study-section">
+        <div class="container">
+            <span class="case-study-section-number">02 / FEATURES</span>
+            <h2 class="case-study-section-title">Pipeline Features</h2>
+
+            <div class="expertise-grid">
+                <div class="expertise-card">
+                    <h3 class="expertise-category-title"><i class="fas fa-video"></i> Video Stream Extraction</h3>
+                    <p class="project-desc">Leverages `yt-dlp` to extract clean audio payloads from YouTube videos efficiently without downloading full video streams.</p>
+                </div>
+
+                <div class="expertise-card">
+                    <h3 class="expertise-category-title"><i class="fas fa-microphone"></i> Speech-to-Text Processing</h3>
+                    <p class="project-desc">Integrates AssemblyAI APIs for automated speaker identification and timestamped transcript generation.</p>
+                </div>
+
+                <div class="expertise-card">
+                    <h3 class="expertise-category-title"><i class="fas fa-brain"></i> LLM Article Synthesis</h3>
+                    <p class="project-desc">Prompt-engineered LLM workflows synthesizing raw transcripts into key takeaways, structured headings, and formatted markdown blogs.</p>
+                </div>
+
+                <div class="expertise-card">
+                    <h3 class="expertise-category-title"><i class="fas fa-language"></i> Multi-Language Translation</h3>
+                    <p class="project-desc">Translates generated articles into Hindi, Marathi, and regional languages with text-to-speech audio playback.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section class="case-study-section">
+        <div class="container">
+            <span class="case-study-section-number">03 / ARCHITECTURE</span>
+            <h2 class="case-study-section-title">Processing Pipeline</h2>
+
+            <div class="architecture-box">
+YouTube URL  -->  yt-dlp Audio Extraction  -->  AssemblyAI Transcription Engine
+                                                              |
+                                                              v
+PDF Export  <--  Text-To-Speech  <--  Translation  <--  OpenRouter LLM Synthesis
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section class="case-study-section">
+        <div class="container">
+            <span class="case-study-section-number">04 / TECHNOLOGY</span>
+            <h2 class="case-study-section-title">Technology Stack</h2>
+
+            <div class="expertise-grid">
+                <div class="expertise-card">
+                    <h3 class="expertise-category-title">Backend Core</h3>
+                    <div class="expertise-pills">
+                        <span class="pill">Python</span>
+                        <span class="pill">Django</span>
+                        <span class="pill">yt-dlp</span>
+                    </div>
+                </div>
+
+                <div class="expertise-card">
+                    <h3 class="expertise-category-title">AI & Speech Services</h3>
+                    <div class="expertise-pills">
+                        <span class="pill">AssemblyAI</span>
+                        <span class="pill">OpenRouter API</span>
+                        <span class="pill">TTS Engines</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Links Section -->
+    <section class="case-study-section">
+        <div class="container">
+            <span class="case-study-section-number">05 / LINKS</span>
+            <h2 class="case-study-section-title">Repository Links</h2>
+
+            <div class="project-links">
+                <a href="https://github.com/Vikash97600/AI-BLOG-GENERATOR-USING-YOUTUBE-VIDEOS" target="_blank" class="btn primary">View GitHub Repository <span class="arrow">→</span></a>
+                <a href="../index.html#work" class="btn outline">Return to Portfolio <span class="arrow">→</span></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Vikash R. Chaurasiya. All rights reserved.</p>
+                <div class="footer-nav">
+                    <a href="../index.html#work">Back to Work</a>
+                    <a href="https://github.com/Vikash97600" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

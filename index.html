@@ -52,7 +52,7 @@
                     </h1>
 
                     <p class="hero-subhead">
-                        Building web systems, APIs, automation workflows, and AI-powered products.
+                        Building web systems, APIs, and AI-powered products.
                     </p>
 
                     <p class="hero-desc">
@@ -60,13 +60,13 @@
                     </p>
 
                     <div class="hero-tech-line">
-                        PYTHON · DJANGO · REST APIs · SQL · AI
+                        Django · REST APIs · SQL · AI
                     </div>
 
                     <div class="hero-actions">
-                        <a href="#work" class="btn primary">VIEW SELECTED WORK</a>
-                        <a href="https://github.com/Vikash97600" target="_blank" class="btn secondary">GITHUB</a>
-                        <a href="Vikash resume.pdf" target="_blank" class="btn outline">RESUME</a>
+                        <a href="#work" class="btn primary">VIEW SELECTED WORK <span class="arrow">→</span></a>
+                        <a href="https://github.com/Vikash97600" target="_blank" class="btn secondary">GITHUB <span class="arrow">→</span></a>
+                        <a href="Vikash resume.pdf" target="_blank" class="btn outline arrow-down">RESUME <span class="arrow">↓</span></a>
                     </div>
                 </div>
 
@@ -88,156 +88,180 @@
                 <p class="section-subtitle">A selection of web applications, backend systems, and AI-powered workflows built around real-world problems.</p>
             </div>
 
+            <!-- Project Category Filter Bar -->
+            <div class="filter-bar">
+                <button class="filter-btn active" data-filter="all">ALL</button>
+                <button class="filter-btn" data-filter="backend">BACKEND</button>
+                <button class="filter-btn" data-filter="ai">AI</button>
+                <button class="filter-btn" data-filter="full-stack">FULL-STACK</button>
+            </div>
+
+            <!-- Featured Primary Project: Panchayat -->
+            <article class="featured-project" data-category="backend ai full-stack">
+                <span class="featured-tag">01 / FEATURED WORK</span>
+                <h3 class="featured-title">PANCHAYAT</h3>
+                <p class="featured-subtitle">AI-Powered Housing Society Management Platform</p>
+
+                <div class="featured-media-wrapper">
+                    <img src="assets/images/panchayat.png" alt="Panchayat Housing Management System Screenshot">
+                </div>
+
+                <div class="featured-tech-line">Django · MySQL · AI · REST APIs</div>
+
+                <p class="featured-desc">
+                    A multi-role housing society platform designed to manage resident operations, complaints, visitors, dues, emergencies, and society workflows with AI-assisted functionality.
+                </p>
+
+                <div class="feature-tags-list">
+                    <span class="feature-tag-item">AI Complaint Processing</span>
+                    <span class="feature-tag-item">Bylaw Assistant</span>
+                    <span class="feature-tag-item">Role-Based Access</span>
+                    <span class="feature-tag-item">Visitor Management</span>
+                    <span class="feature-tag-item">Emergency Workflows</span>
+                </div>
+
+                <div class="project-links">
+                    <a href="projects/panchayat.html" class="btn primary">VIEW CASE STUDY <span class="arrow">→</span></a>
+                    <a href="https://github.com/Vikash97600/Panchayat-housing-society" target="_blank" class="btn secondary">GITHUB <span class="arrow">→</span></a>
+                </div>
+            </article>
+
+            <!-- Secondary Projects Grid -->
             <div class="projects-grid">
-                <!-- Featured Primary Project: Panchayat -->
-                <article class="project-card featured">
+                <!-- AI Blog Generator -->
+                <article class="project-card" data-category="backend ai">
                     <div class="project-media">
-                        <img src="assets/images/panchayat.png" alt="Panchayat Housing Management System">
+                        <img src="assets/images/ai_blog.jpg" alt="AI Blog Generator Screenshot">
                     </div>
                     <div class="project-content">
                         <div>
-                            <span class="project-badge">Primary Featured Project</span>
-                            <h3 class="project-title">Panchayat — AI Housing Society System</h3>
+                            <h3 class="project-title">AI Blog Generator</h3>
+                            <p class="project-subtitle">YouTube-to-Blog AI Content Pipeline</p>
+                            <div class="featured-tech-line">Django · yt-dlp · AssemblyAI · LLM APIs</div>
                             <p class="project-desc">
-                                Streamlines Indian co-operative housing society operations with AI complaint management, multilingual voice/text assistance, smart bylaw guidance, maintenance tracking, and role-based dashboards.
+                                A Django-based workflow that converts YouTube video content into structured blog content using transcription, LLM processing, translation, text-to-speech, and publishing utilities.
                             </p>
-                            <div class="project-tech-tags">
-                                <span class="pill">Python</span>
-                                <span class="pill">Django</span>
-                                <span class="pill">REST APIs</span>
-                                <span class="pill">SQL</span>
-                                <span class="pill">AI Automation</span>
+                            <div class="feature-tags-list">
+                                <span class="feature-tag-item">Video Processing</span>
+                                <span class="feature-tag-item">Speech-to-Text</span>
+                                <span class="feature-tag-item">LLM Pipeline</span>
+                                <span class="feature-tag-item">Translation</span>
+                                <span class="feature-tag-item">TTS</span>
                             </div>
                         </div>
                         <div class="project-links">
-                            <a href="https://github.com/Vikash97600/Panchayat-housing-society" target="_blank" class="btn secondary small">GitHub Repository</a>
+                            <a href="projects/ai-blog-generator.html" class="btn primary small">CASE STUDY <span class="arrow">→</span></a>
+                            <a href="https://github.com/Vikash97600/AI-BLOG-GENERATOR-USING-YOUTUBE-VIDEOS" target="_blank" class="btn outline small">GITHUB <span class="arrow">→</span></a>
                         </div>
                     </div>
                 </article>
 
-                <!-- Project 2: LockVault -->
-                <article class="project-card">
+                <!-- AIVOA (Currently Building) -->
+                <article class="project-card" data-category="backend ai full-stack">
+                    <div class="project-content">
+                        <div>
+                            <div class="project-status-pill">
+                                <span class="status-dot"></span> CURRENTLY IN DEVELOPMENT
+                            </div>
+                            <h3 class="project-title">AIVOA</h3>
+                            <p class="project-subtitle">AI-Powered Customer Complaint Management</p>
+                            <div class="featured-tech-line">React · FastAPI · PostgreSQL · LangGraph · LLM</div>
+                            <p class="project-desc">
+                                An AI-assisted complaint management system focused on risk assessment, document processing, and QMS workflows for pharmaceutical manufacturing.
+                            </p>
+                            <div class="feature-tags-list">
+                                <span class="feature-tag-item">LLM Routing</span>
+                                <span class="feature-tag-item">LangGraph Workflows</span>
+                                <span class="feature-tag-item">Risk Assessment</span>
+                                <span class="feature-tag-item">QMS Pipeline</span>
+                            </div>
+                        </div>
+                        <div class="project-links">
+                            <a href="projects/aivoa.html" class="btn primary small">CASE STUDY <span class="arrow">→</span></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- LockVault -->
+                <article class="project-card" data-category="full-stack">
                     <div class="project-media">
-                        <img src="assets/images/lockvault-project.png" alt="LockVault Password Manager">
+                        <img src="assets/images/lockvault-project.png" alt="LockVault Password Manager Screenshot">
                     </div>
                     <div class="project-content">
                         <div>
-                            <h3 class="project-title">LockVault — Offline Password Manager</h3>
+                            <h3 class="project-title">LockVault</h3>
+                            <p class="project-subtitle">Zero-Knowledge Client-Side Password Manager</p>
+                            <div class="featured-tech-line">HTML · CSS · JavaScript · IndexedDB · AES-256-GCM</div>
                             <p class="project-desc">
                                 Client-side zero-knowledge password manager leveraging Web Crypto API with AES-256-GCM encryption and PBKDF2 (100,000 iterations), storing encrypted vaults locally in IndexedDB.
                             </p>
-                            <div class="project-tech-tags">
-                                <span class="pill">HTML</span>
-                                <span class="pill">CSS</span>
-                                <span class="pill">JavaScript</span>
-                                <span class="pill">IndexedDB</span>
-                                <span class="pill">AES-256-GCM</span>
+                            <div class="feature-tags-list">
+                                <span class="feature-tag-item">AES-256-GCM</span>
+                                <span class="feature-tag-item">PBKDF2</span>
+                                <span class="feature-tag-item">IndexedDB</span>
+                                <span class="feature-tag-item">Zero Knowledge</span>
                             </div>
                         </div>
                         <div class="project-links">
-                            <a href="https://lock-vault-phi.vercel.app/" target="_blank" class="btn primary small">Live Demo</a>
-                            <a href="https://github.com/Vikash97600/LockVault" target="_blank" class="btn outline small">GitHub</a>
+                            <a href="https://lock-vault-phi.vercel.app/" target="_blank" class="btn primary small">LIVE DEMO <span class="arrow">→</span></a>
+                            <a href="https://github.com/Vikash97600/LockVault" target="_blank" class="btn outline small">GITHUB <span class="arrow">→</span></a>
                         </div>
                     </div>
                 </article>
 
-                <!-- Project 3: AI Blog Generator -->
-                <article class="project-card">
+                <!-- ERMS -->
+                <article class="project-card" data-category="backend">
                     <div class="project-media">
-                        <img src="assets/images/ai_blog.jpg" alt="AI Blog Generator">
+                        <img src="assets/images/erms.png" alt="ERMS System Screenshot">
                     </div>
                     <div class="project-content">
                         <div>
-                            <h3 class="project-title">AI Blog Generator (YouTube to Article)</h3>
+                            <h3 class="project-title">ERMS</h3>
+                            <p class="project-subtitle">Employee Record Management System</p>
+                            <div class="featured-tech-line">Python · Django · MySQL · Authentication</div>
                             <p class="project-desc">
-                                Django web app automatically converting YouTube videos into structured blogs. Extracts transcripts via yt-dlp & AssemblyAI, processes text via LLMs, and supports translation, TTS, & PDF export.
+                                Full-featured enterprise web portal managing employee records, attendance, department allocations, role-based permission matrix, and confidential data security.
                             </p>
-                            <div class="project-tech-tags">
-                                <span class="pill">Python</span>
-                                <span class="pill">Django</span>
-                                <span class="pill">AssemblyAI</span>
-                                <span class="pill">OpenRouter LLM</span>
+                            <div class="feature-tags-list">
+                                <span class="feature-tag-item">Role Matrix</span>
+                                <span class="feature-tag-item">Django ORM</span>
+                                <span class="feature-tag-item">MySQL</span>
+                                <span class="feature-tag-item">Data Security</span>
                             </div>
                         </div>
                         <div class="project-links">
-                            <a href="https://github.com/Vikash97600/AI-BLOG-GENERATOR-USING-YOUTUBE-VIDEOS" target="_blank" class="btn outline small">GitHub</a>
+                            <a href="https://github.com/Vikash97600/Employee-Record-Management-System" target="_blank" class="btn outline small">GITHUB <span class="arrow">→</span></a>
                         </div>
                     </div>
                 </article>
 
-                <!-- Project 4: ERMS -->
-                <article class="project-card">
+                <!-- Banking Management System -->
+                <article class="project-card" data-category="backend">
                     <div class="project-media">
-                        <img src="assets/images/erms.png" alt="Employee Record Management System">
+                        <img src="assets/images/bank_logo.png" alt="Banking System Screenshot">
                     </div>
                     <div class="project-content">
                         <div>
-                            <h3 class="project-title">ERMS — Employee Record Management System</h3>
+                            <h3 class="project-title">Banking Management System</h3>
+                            <p class="project-subtitle">DSA Algorithmic Core Engine</p>
+                            <div class="featured-tech-line">Java · Swing · Data Structures & Algorithms</div>
                             <p class="project-desc">
-                                Enterprise web portal managing employee records, attendance, department allocations, role-based permission matrix, and confidential data security.
+                                Desktop application automating account creation, transaction authentication, FIFO chequebook processing, and historical ledger management built using fundamental DSA concepts.
                             </p>
-                            <div class="project-tech-tags">
-                                <span class="pill">Python</span>
-                                <span class="pill">Django</span>
-                                <span class="pill">MySQL</span>
-                                <span class="pill">Role Auth</span>
+                            <div class="feature-tags-list">
+                                <span class="feature-tag-item">FIFO Queues</span>
+                                <span class="feature-tag-item">Algorithm Engine</span>
+                                <span class="feature-tag-item">Swing GUI</span>
+                                <span class="feature-tag-item">Ledger Management</span>
                             </div>
                         </div>
                         <div class="project-links">
-                            <a href="https://github.com/Vikash97600/Employee-Record-Management-System" target="_blank" class="btn outline small">GitHub</a>
+                            <a href="https://github.com/user-attachments/assets/5437ea5d-3c53-4765-b08e-eafc667bee87" target="_blank" class="btn secondary small">DEMO VIDEO <span class="arrow">→</span></a>
+                            <a href="https://github.com/Vikash97600/Banking-System-DSA-Concept-" target="_blank" class="btn outline small">GITHUB <span class="arrow">→</span></a>
                         </div>
                     </div>
                 </article>
 
-                <!-- Project 5: Banking System -->
-                <article class="project-card">
-                    <div class="project-media">
-                        <img src="assets/images/bank_logo.png" alt="Banking Management System">
-                    </div>
-                    <div class="project-content">
-                        <div>
-                            <h3 class="project-title">Banking Management System (DSA Core)</h3>
-                            <p class="project-desc">
-                                Desktop application automating account creation, transaction authentication, FIFO chequebook processing, and historical ledger management implemented using core Data Structures & Algorithms.
-                            </p>
-                            <div class="project-tech-tags">
-                                <span class="pill">Java</span>
-                                <span class="pill">Swing</span>
-                                <span class="pill">Data Structures</span>
-                                <span class="pill">OOP</span>
-                            </div>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/user-attachments/assets/5437ea5d-3c53-4765-b08e-eafc667bee87" target="_blank" class="btn secondary small">Demo Video</a>
-                            <a href="https://github.com/Vikash97600/Banking-System-DSA-Concept-" target="_blank" class="btn outline small">GitHub</a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Project 6: Personal Portfolio Website -->
-                <article class="project-card">
-                    <div class="project-media">
-                        <img src="assets/images/portfolio-project.png" alt="Personal Portfolio Website">
-                    </div>
-                    <div class="project-content">
-                        <div>
-                            <h3 class="project-title">Personal Portfolio Website</h3>
-                            <p class="project-desc">
-                                High-performance developer portfolio featuring responsive typography, dark editorial layout tokens, custom design components, and lightbox media showcase.
-                            </p>
-                            <div class="project-tech-tags">
-                                <span class="pill">HTML5</span>
-                                <span class="pill">CSS3</span>
-                                <span class="pill">JavaScript</span>
-                                <span class="pill">Web Architecture</span>
-                            </div>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://vikash-personal-portfolio.netlify.app/" target="_blank" class="btn primary small">Live Demo</a>
-                            <a href="https://github.com/Vikash97600/My-Personal-Portfolio" target="_blank" class="btn outline small">GitHub</a>
-                        </div>
-                    </div>
-                </article>
             </div>
         </div>
     </section>
@@ -415,11 +439,13 @@
             </div>
 
             <div class="currently-building-card">
-                <div class="building-status">IN DEVELOPMENT</div>
+                <div class="project-status-pill">
+                    <span class="status-dot"></span> CURRENTLY IN DEVELOPMENT
+                </div>
                 <h3 class="building-title">AIVOA</h3>
                 <p class="building-subhead">React · FastAPI · PostgreSQL · LangGraph · LLM</p>
                 <p class="project-desc">
-                    Developing an intelligent automated customer complaint routing and resolution platform. Incorporates LLM classification, multi-agent LangGraph workflows, and high-concurrency FastAPI backend pipelines.
+                    An AI-assisted complaint management system focused on risk assessment, document processing, and QMS workflows for pharmaceutical manufacturing.
                 </p>
             </div>
         </div>
@@ -438,8 +464,7 @@
 
             <div class="about-body">
                 <p>
-                    I am a software developer with a strong focus on Python backend systems, web applications, database design, and modern AI integrations. 
-                    I enjoy transforming complex requirements into reliable, structured, and practical software products.
+                    I build practical software from complex requirements, with a focus on backend engineering, databases, REST APIs, and AI integrations. With a strong foundation in computer applications and hands-on system building, I aim to create reliable and maintainable digital products.
                 </p>
             </div>
         </div>
@@ -455,13 +480,13 @@
 
             <div class="education-grid">
                 <div class="education-card">
-                    <h3 class="education-degree">MCA — Master of Computer Applications</h3>
+                    <h3 class="education-degree">MCA — Computer Applications</h3>
                     <p class="education-institution">TIMSCDR · University of Mumbai</p>
                     <span class="education-meta">2025 – Present</span>
                 </div>
 
                 <div class="education-card">
-                    <h3 class="education-degree">BCA — Bachelor of Computer Applications</h3>
+                    <h3 class="education-degree">BCA — Computer Applications</h3>
                     <p class="education-institution">Tilak Maharashtra Vidyapeeth</p>
                     <span class="education-meta">2022 – 2025 · CGPA: 8.17</span>
                 </div>
@@ -540,13 +565,13 @@
                 <div class="contact-info">
                     <h2 class="contact-info-title">Have a problem worth solving?</h2>
                     <p class="contact-info-desc">
-                        I'm interested in backend engineering, Python development, and AI-powered applications. Feel free to reach out directly.
+                        I'm interested in backend engineering, Python development, and AI-powered applications.
                     </p>
 
                     <div class="contact-buttons">
-                        <a href="mailto:vikashch97600@gmail.com" class="btn primary">EMAIL ME</a>
-                        <a href="https://www.linkedin.com/in/vikash97600/" target="_blank" class="btn secondary">LINKEDIN</a>
-                        <a href="https://github.com/Vikash97600" target="_blank" class="btn outline">GITHUB</a>
+                        <a href="mailto:vikashch97600@gmail.com" class="btn primary">EMAIL ME <span class="arrow">→</span></a>
+                        <a href="https://www.linkedin.com/in/vikash97600/" target="_blank" class="btn secondary">LINKEDIN <span class="arrow">→</span></a>
+                        <a href="https://github.com/Vikash97600" target="_blank" class="btn outline">GITHUB <span class="arrow">→</span></a>
                     </div>
                 </div>
 
@@ -566,7 +591,7 @@
                         <textarea id="message" name="message" rows="5" placeholder="How can I help you?" required></textarea>
                     </div>
 
-                    <button type="submit" class="btn primary full-width">SEND MESSAGE</button>
+                    <button type="submit" class="btn primary full-width">SEND MESSAGE <span class="arrow">→</span></button>
                 </form>
             </div>
         </div>

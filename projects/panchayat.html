@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panchayat Case Study | Vikash R. Chaurasiya</title>
+    <meta name="description" content="Detailed engineering case study for Panchayat — AI-Powered Housing Society Management Platform.">
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Header Navigation -->
+    <nav class="navbar scrolled">
+        <div class="container">
+            <a href="../index.html#home" class="logo">VIKASH<span class="logo-dot">.</span></a>
+            <div class="nav-actions">
+                <a href="../index.html#work" class="back-link"><i class="fas fa-arrow-left"></i> BACK TO WORK</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Case Study Hero -->
+    <section class="case-study-hero">
+        <div class="container">
+            <a href="../index.html#work" class="back-link"><i class="fas fa-arrow-left"></i> BACK TO SELECTED WORK</a>
+            <span class="section-number">CASE STUDY // FEATURED PROJECT</span>
+            <h1 class="case-study-title">PANCHAYAT</h1>
+            <p class="case-study-subtitle">AI-Powered Housing Society Management Platform</p>
+
+            <div class="project-tech-tags" style="margin-bottom: 24px;">
+                <span class="pill">Python</span>
+                <span class="pill">Django</span>
+                <span class="pill">MySQL</span>
+                <span class="pill">REST APIs</span>
+                <span class="pill">AI Workflows</span>
+            </div>
+
+            <div class="project-links">
+                <a href="https://github.com/Vikash97600/Panchayat-housing-society" target="_blank" class="btn primary">GITHUB REPOSITORY <span class="arrow">→</span></a>
+            </div>
+
+            <div class="featured-media-wrapper" style="margin-top: 40px;">
+                <img src="../assets/images/panchayat.png" alt="Panchayat Housing Society Platform Screenshot">
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="case-study-section">
+        <div class="container">
+            <span class="case-study-section-number">01 / OVERVIEW</span>
+            <h2 class="case-study-section-title">Problem & Solution</h2>
+
+            <div class="about-body">
+                <h3 style="color: var(--text-primary); margin-bottom: 12px; font-weight: 600;">The Problem</h3>
+                <p style="margin-bottom: 24px;">
+                    Co-operative housing societies in India face significant administrative fragmentation: resident grievances are often delayed via unorganized manual messaging, visitor tracking relies on physical logbooks, bylaw queries require searching lengthy PDF records, and emergency alerts lack real-time escalation channels.
+                </p>
+
+                <h3 style="color: var(--text-primary); margin-bottom: 12px; font-weight: 600;">The Solution</h3>
+                <p>
+                    Panchayat consolidates society management into a role-based Django platform with an integrated AI core. It automates complaint categorization, enables voice-assisted bylaw querying in regional languages, streams maintenance tracking, and manages secure gatekeeping for residents, security personnel, and administrators.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="case-study-section">
+        <div class="container">
+            <span class="case-study-section-number">02 / FEATURES</span>
+            <h2 class="case-study-section-title">Core System Features</h2>
+
+            <div class="expertise-grid">
+                <div class="expertise-card">
+                    <h3 class="expertise-category-title"><i class="fas fa-robot"></i> AI Complaint Processing</h3>
+                    <p class="project-desc">Automatically analyzes incoming resident issues, assigns priority levels, categories (plumbing, electrical, administrative), and routes notifications directly to assigned vendors or committee members.</p>
+                </div>
+
+                <div class="expertise-card">
+                    <h3 class="expertise-category-title"><i class="fas fa-book-open"></i> Bylaw Assistant</h3>
+                    <p class="project-desc">Multilingual voice and text AI query interface allowing residents to ask natural questions about society rules, parking policies, and maintenance guidelines.</p>
+                </div>
+
+                <div class="expertise-card">
+                    <h3 class="expertise-category-title"><i class="fas fa-user-shield"></i> Role-Based Access Control</h3>
+                    <p class="project-desc">Custom authorization matrix segregating Resident, Security Guard, and Society Admin interfaces with granular data access permissions.</p>
+                </div>
+
+                <div class="expertise-card">
+                    <h3 class="expertise-category-title"><i class="fas fa-user-check"></i> Visitor Management</h3>
+                    <p class="project-desc">Digital gatepass entry workflows allowing security guards to log guest entries and request instant digital approval from flat owners.</p>
+                </div>
+
+                <div class="expertise-card">
+                    <h3 class="expertise-category-title"><i class="fas fa-bell"></i> Emergency Workflows</h3>
+                    <p class="project-desc">One-tap emergency broadcast system sending high-priority alerts to security personnel and committee members during incidents.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section class="case-study-section">
+        <div class="container">
+            <span class="case-study-section-number">03 / ARCHITECTURE</span>
+            <h2 class="case-study-section-title">System Architecture</h2>
+
+            <div class="architecture-box">
++-------------------------------------------------------------------------------+
+|                             CLIENT INTERFACE (Web / Mobile)                   |
+|                   Residents  •  Security Guards  •  Admins                    |
++---------------------------------------+---------------------------------------+
+                                        | HTTP / JSON REST APIs
+                                        v
++-------------------------------------------------------------------------------+
+|                              DJANGO BACKEND CORE                              |
+|   • Session & RBAC Middleware          • Custom Model ViewSets                |
+|   • Complaint Categorizer Engine       • Emergency Event Dispatcher           |
++-------------------+-----------------------------------+-----------------------+
+                    |                                   |
+                    v                                   v
++---------------------------------------+   +-----------------------------------+
+|            DATABASE LAYER             |   |        AI INTEGRATION CORE        |
+|    • Relational Schemas (MySQL/SQLite)|   |    • OpenRouter / LLM APIs        |
+|    • Role Matrices & Audit Logs       |   |    • Multilingual Speech-to-Text  |
++---------------------------------------+   +-----------------------------------+
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section class="case-study-section">
+        <div class="container">
+            <span class="case-study-section-number">04 / TECHNOLOGY</span>
+            <h2 class="case-study-section-title">Technology Stack</h2>
+
+            <div class="expertise-grid">
+                <div class="expertise-card">
+                    <h3 class="expertise-category-title">Backend</h3>
+                    <div class="expertise-pills">
+                        <span class="pill">Python</span>
+                        <span class="pill">Django</span>
+                        <span class="pill">Django ORM</span>
+                        <span class="pill">REST APIs</span>
+                    </div>
+                </div>
+
+                <div class="expertise-card">
+                    <h3 class="expertise-category-title">Database</h3>
+                    <div class="expertise-pills">
+                        <span class="pill">MySQL</span>
+                        <span class="pill">SQLite</span>
+                        <span class="pill">Relational Schemas</span>
+                    </div>
+                </div>
+
+                <div class="expertise-card">
+                    <h3 class="expertise-category-title">AI & Services</h3>
+                    <div class="expertise-pills">
+                        <span class="pill">OpenRouter API</span>
+                        <span class="pill">LLM Prompt Pipelines</span>
+                        <span class="pill">Audio Processing</span>
+                    </div>
+                </div>
+
+                <div class="expertise-card">
+                    <h3 class="expertise-category-title">Frontend</h3>
+                    <div class="expertise-pills">
+                        <span class="pill">HTML5</span>
+                        <span class="pill">CSS3</span>
+                        <span class="pill">JavaScript</span>
+                        <span class="pill">Responsive Dashboards</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Engineering Decisions -->
+    <section class="case-study-section">
+        <div class="container">
+            <span class="case-study-section-number">05 / ENGINEERING DECISIONS</span>
+            <h2 class="case-study-section-title">Technical Decisions & Trade-Offs</h2>
+
+            <ul class="experience-bullets" style="max-width: 800px;">
+                <li>
+                    <strong>Django Group-Based Authorization Matrix:</strong> Implemented explicit Django permission groups to strictly isolate security guard gatepass access from administrative ledger and resident grievance records.
+                </li>
+                <li>
+                    <strong>Fallback Prompt Templates for AI Services:</strong> Standardized structured JSON responses from LLM endpoints for complaint classification to prevent unstructured parser failures in production.
+                </li>
+                <li>
+                    <strong>Relational Schema Normalization:</strong> Separated Flat Ownership, Member Contacts, Maintenance Records, and Visitor Logs into distinct database tables with index constraints to support fast query lookups.
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Links Section -->
+    <section class="case-study-section">
+        <div class="container">
+            <span class="case-study-section-number">06 / LINKS</span>
+            <h2 class="case-study-section-title">Repository Links</h2>
+
+            <div class="project-links">
+                <a href="https://github.com/Vikash97600/Panchayat-housing-society" target="_blank" class="btn primary">View GitHub Repository <span class="arrow">→</span></a>
+                <a href="../index.html#work" class="btn outline">Return to Portfolio <span class="arrow">→</span></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Vikash R. Chaurasiya. All rights reserved.</p>
+                <div class="footer-nav">
+                    <a href="../index.html#work">Back to Work</a>
+                    <a href="https://github.com/Vikash97600" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
