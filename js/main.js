@@ -226,4 +226,89 @@ document.addEventListener('DOMContentLoaded', function () {
             if (e.key === 'ArrowRight') nextImage();
         });
     }
+
+    // ==========================================================================
+    // 5. HYPER-CREATIVE CELESTIAL ECLIPSE THEME ENGINE WITH RADIAL WAVE
+    // ==========================================================================
+
+    const themeToggleBtn = document.getElementById('themeToggle');
+
+    function getStoredTheme() {
+        const stored = localStorage.getItem('theme_preference');
+        if (stored) return stored;
+        return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    }
+
+    function applyTheme(theme, animate = false, event = null) {
+        const targetTheme = theme === 'light' ? 'light' : 'dark';
+        const isLight = targetTheme === 'light';
+
+        if (themeToggleBtn) {
+            themeToggleBtn.setAttribute('data-tooltip', isLight ? 'Obsidian Dark' : 'Solar Alabaster');
+            themeToggleBtn.setAttribute('aria-label', isLight ? 'Switch to Dark Mode' : 'Switch to Light Mode');
+        }
+
+        if (!animate || !event) {
+            if (isLight) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+            }
+            localStorage.setItem('theme_preference', targetTheme);
+            return;
+        }
+
+        // Calculate wave center coordinates
+        const rect = themeToggleBtn ? themeToggleBtn.getBoundingClientRect() : { left: window.innerWidth / 2, top: 40, width: 40, height: 40 };
+        const clickX = (event && event.clientX) ? event.clientX : (rect.left + rect.width / 2);
+        const clickY = (event && event.clientY) ? event.clientY : (rect.top + rect.height / 2);
+
+        const maxRadius = Math.hypot(
+            Math.max(clickX, window.innerWidth - clickX),
+            Math.max(clickY, window.innerHeight - clickY)
+        );
+
+        const wave = document.createElement('div');
+        wave.className = 'theme-ripple-wave';
+        wave.style.left = clickX + 'px';
+        wave.style.top = clickY + 'px';
+        wave.style.width = '0px';
+        wave.style.height = '0px';
+        wave.style.backgroundColor = isLight ? '#F6F7FB' : '#07080D';
+        wave.style.opacity = '1';
+
+        document.body.appendChild(wave);
+        wave.getBoundingClientRect(); // trigger reflow
+
+        wave.style.width = (maxRadius * 2.2) + 'px';
+        wave.style.height = (maxRadius * 2.2) + 'px';
+
+        setTimeout(() => {
+            if (isLight) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+            }
+            localStorage.setItem('theme_preference', targetTheme);
+        }, 300);
+
+        setTimeout(() => {
+            wave.style.opacity = '0';
+            setTimeout(() => {
+                if (wave.parentNode) wave.parentNode.removeChild(wave);
+            }, 400);
+        }, 750);
+    }
+
+    // Set initial theme without animation
+    const initialTheme = getStoredTheme();
+    applyTheme(initialTheme, false);
+
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', function (e) {
+            const activeTheme = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+            const nextTheme = activeTheme === 'light' ? 'dark' : 'light';
+            applyTheme(nextTheme, true, e);
+        });
+    }
 });
