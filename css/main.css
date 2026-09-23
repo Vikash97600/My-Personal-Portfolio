@@ -1,6 +1,6 @@
 /* ==========================================================================
    VIKASH R. CHAURASIYA — PROFESSIONAL DEVELOPER PORTFOLIO
-   Design Tokens & Core Stylesheet (Pass 2 - Hero & Selected Work)
+   Design Tokens & Core Stylesheet (Pass 3 - Cinematic Motion & Polish)
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
@@ -37,8 +37,9 @@
     --radius-lg: 16px;
     --radius-full: 9999px;
 
-    /* Transitions */
+    /* Motion Easing & Transitions */
     --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Global Reset & Base Setup */
@@ -57,8 +58,26 @@ html {
     -webkit-font-smoothing: antialiased;
 }
 
+/* Imperceptible Animated Ambient Background */
+@keyframes ambientBackgroundShift {
+    0% {
+        background-position: 0% 0%, 100% 100%;
+    }
+    50% {
+        background-position: 100% 50%, 0% 50%;
+    }
+    100% {
+        background-position: 0% 0%, 100% 100%;
+    }
+}
+
 body {
     background-color: var(--background);
+    background-image: 
+        radial-gradient(circle at 15% 20%, rgba(139, 92, 246, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 85% 80%, rgba(34, 211, 238, 0.06) 0%, transparent 45%);
+    background-size: 140% 140%;
+    animation: ambientBackgroundShift 25s ease-in-out infinite alternate;
     color: var(--text-primary);
     line-height: 1.7;
     font-size: 1rem;
@@ -147,6 +166,24 @@ section {
     line-height: 1.6;
 }
 
+/* Universal Section Reveal System */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 700ms var(--ease-editorial), transform 700ms var(--ease-editorial);
+    will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.stagger-1 { transition-delay: 100ms; }
+.stagger-2 { transition-delay: 200ms; }
+.stagger-3 { transition-delay: 300ms; }
+.stagger-4 { transition-delay: 400ms; }
+
 /* Typography Helpers & Links */
 a {
     color: inherit;
@@ -172,7 +209,11 @@ a {
 
 .btn .arrow {
     display: inline-block;
-    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.25s var(--ease-editorial);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
 }
 
 .btn:hover .arrow {
@@ -190,7 +231,6 @@ a {
 
 .btn.primary:hover {
     background: #ffffff;
-    transform: translateY(-1px);
 }
 
 .btn.secondary {
@@ -202,7 +242,6 @@ a {
 .btn.secondary:hover {
     border-color: var(--border-hover);
     background: #171b28;
-    transform: translateY(-1px);
 }
 
 .btn.outline {
@@ -214,7 +253,6 @@ a {
 .btn.outline:hover {
     color: var(--text-primary);
     border-color: var(--border-hover);
-    transform: translateY(-1px);
 }
 
 .btn.small {
@@ -241,7 +279,7 @@ a {
     color: var(--text-primary);
 }
 
-/* Sticky Navigation */
+/* Sticky Navigation & Active Indicator */
 .navbar {
     position: fixed;
     top: 0;
@@ -249,15 +287,15 @@ a {
     width: 100%;
     height: var(--header-height);
     z-index: 1000;
-    transition: var(--transition);
+    transition: background 300ms var(--ease-editorial), backdrop-filter 300ms var(--ease-editorial), border-color 300ms var(--ease-editorial);
     background: transparent;
 }
 
 .navbar.scrolled {
-    background: rgba(7, 8, 13, 0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
+    background: rgba(7, 8, 13, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .navbar .container {
@@ -285,13 +323,34 @@ a {
 }
 
 .nav-item {
+    position: relative;
     font-size: 0.9rem;
     color: var(--text-secondary);
     font-weight: 400;
+    padding-block: 4px;
+    transition: color 250ms ease;
+}
+
+.nav-item::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent-purple);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 250ms var(--ease-editorial);
 }
 
 .nav-item:hover, .nav-item.active {
     color: var(--text-primary);
+}
+
+.nav-item.active::after {
+    transform: scaleX(1);
+    transform-origin: left;
 }
 
 .nav-actions {
@@ -370,7 +429,29 @@ a {
     }
 }
 
-/* Two-Column Hero Section */
+/* Staged Hero Entrance Animations */
+@keyframes heroFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes heroScaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 .hero {
     min-height: 100vh;
     display: flex;
@@ -393,7 +474,43 @@ a {
     }
 }
 
-/* Hero Microcopy & Availability Label */
+.hero-animate-status {
+    opacity: 0;
+    animation: heroFadeUp 800ms var(--ease-editorial) 100ms forwards;
+}
+
+.hero-animate-title {
+    opacity: 0;
+    animation: heroFadeUp 800ms var(--ease-editorial) 200ms forwards;
+}
+
+.hero-animate-portrait {
+    opacity: 0;
+    animation: heroScaleIn 900ms var(--ease-editorial) 300ms forwards;
+}
+
+.hero-animate-subhead {
+    opacity: 0;
+    animation: heroFadeUp 800ms var(--ease-editorial) 350ms forwards;
+}
+
+.hero-animate-tech {
+    opacity: 0;
+    animation: heroFadeUp 800ms var(--ease-editorial) 450ms forwards;
+}
+
+.hero-animate-actions {
+    opacity: 0;
+    animation: heroFadeUp 800ms var(--ease-editorial) 550ms forwards;
+}
+
+/* Subtle Status Pulse */
+@keyframes subtlePulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
 .hero-status {
     display: inline-flex;
     align-items: center;
@@ -414,6 +531,7 @@ a {
     height: 7px;
     border-radius: 50%;
     background: var(--success);
+    animation: subtlePulse 2s ease-in-out infinite;
 }
 
 .hero-title {
@@ -488,7 +606,7 @@ a {
     height: 100%;
     object-fit: cover;
     filter: grayscale(10%) contrast(102%);
-    transition: var(--transition);
+    transition: filter 500ms var(--ease-editorial);
 }
 
 .portrait-frame:hover img {
@@ -536,11 +654,11 @@ a {
     border-radius: var(--radius-lg);
     padding: 48px;
     margin-bottom: 40px;
-    transition: var(--transition);
+    transition: border-color 300ms var(--ease-editorial), background 300ms var(--ease-editorial), transform 300ms var(--ease-editorial);
 }
 
 .featured-project:hover {
-    border-color: var(--border-hover);
+    border-color: rgba(255, 255, 255, 0.16);
     background: var(--surface-elevated);
 }
 
@@ -584,7 +702,7 @@ a {
     height: auto;
     display: block;
     object-fit: cover;
-    transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition: transform 500ms var(--ease-editorial);
 }
 
 .featured-project:hover .featured-media-wrapper img {
@@ -646,13 +764,13 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: var(--transition);
+    transition: transform 300ms var(--ease-editorial), border-color 300ms var(--ease-editorial), background 300ms var(--ease-editorial);
 }
 
 .project-card:hover {
-    border-color: var(--border-hover);
+    border-color: rgba(255, 255, 255, 0.16);
     background: var(--surface-elevated);
-    transform: translateY(-2px);
+    transform: translateY(-4px);
 }
 
 .project-media {
@@ -666,7 +784,7 @@ a {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition: transform 500ms var(--ease-editorial);
 }
 
 .project-card:hover .project-media img {
@@ -731,6 +849,10 @@ a {
     margin-bottom: 16px;
 }
 
+.project-status-pill .status-dot {
+    background: var(--accent-cyan);
+}
+
 /* Expertise Section */
 .expertise-grid {
     display: grid;
@@ -753,7 +875,7 @@ a {
 }
 
 .expertise-card:hover {
-    border-color: var(--border-hover);
+    border-color: rgba(255, 255, 255, 0.16);
     background: var(--surface-elevated);
 }
 
@@ -770,12 +892,31 @@ a {
     gap: 10px;
 }
 
-/* Experience Section */
+/* Experience Section & Vertical Line Growth */
 .experience-timeline {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 24px;
     max-width: 840px;
+    padding-left: 20px;
+}
+
+.experience-timeline::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: var(--border);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 800ms var(--ease-editorial);
+}
+
+.experience-timeline.is-visible::before {
+    transform: scaleY(1);
 }
 
 .experience-card {
@@ -787,7 +928,7 @@ a {
 }
 
 .experience-card:hover {
-    border-color: var(--border-hover);
+    border-color: rgba(255, 255, 255, 0.16);
     background: var(--surface-elevated);
 }
 
@@ -928,7 +1069,7 @@ a {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: var(--transition);
+    transition: transform 500ms var(--ease-editorial);
 }
 
 .gallery-item:hover img {
@@ -1017,7 +1158,7 @@ a {
 }
 
 .currently-building-card:hover {
-    border-color: var(--border-hover);
+    border-color: rgba(255, 255, 255, 0.16);
     background: var(--surface-elevated);
 }
 
@@ -1124,7 +1265,7 @@ a {
 }
 
 .certification-card:hover {
-    border-color: var(--border-hover);
+    border-color: rgba(255, 255, 255, 0.16);
     background: var(--surface-elevated);
 }
 
@@ -1354,4 +1495,42 @@ a {
     line-height: 1.8;
     color: var(--text-secondary);
     overflow-x: auto;
+}
+
+/* Accessibility / Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    body {
+        animation: none !important;
+    }
+
+    .hero-animate-status,
+    .hero-animate-title,
+    .hero-animate-portrait,
+    .hero-animate-subhead,
+    .hero-animate-tech,
+    .hero-animate-actions {
+        opacity: 1 !important;
+        transform: none !important;
+        animation: none !important;
+    }
+
+    .reveal-on-scroll {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .experience-timeline::before {
+        transform: scaleY(1) !important;
+    }
+
+    .status-dot {
+        animation: none !important;
+    }
 }

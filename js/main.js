@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const navItems = document.querySelectorAll('.nav-links a');
     const sections = document.querySelectorAll('section');
 
-    // Sticky navbar on scroll (>40px)
+    // Sticky navbar transition (>40px)
     window.addEventListener('scroll', function () {
         if (window.scrollY > 40) {
             if (navbar) navbar.classList.add('scrolled');
@@ -58,7 +58,49 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('scroll', scrollSpy);
 
     // ==========================================================================
-    // 2. PROJECT CATEGORY FILTERING (ALL, BACKEND, AI, FULL-STACK)
+    // 2. UNIVERSAL SECTION REVEAL SYSTEM & TIMELINE SCALING
+    // ==========================================================================
+    
+    const revealElements = document.querySelectorAll('.reveal-on-scroll');
+    const timelineElement = document.querySelector('.experience-timeline');
+
+    if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        if (timelineElement) {
+            const timelineObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.2
+            });
+
+            timelineObserver.observe(timelineElement);
+        }
+    } else {
+        // Fallback for browsers without IntersectionObserver
+        revealElements.forEach(el => el.classList.add('is-visible'));
+        if (timelineElement) timelineElement.classList.add('is-visible');
+    }
+
+    // ==========================================================================
+    // 3. PROJECT CATEGORY FILTERING (ALL, BACKEND, AI, FULL-STACK)
     // ==========================================================================
     
     const filterButtons = document.querySelectorAll('.filter-btn');
@@ -92,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // ==========================================================================
-    // 3. LIGHTBOX GALLERY MODAL FOR RECOGNITION SECTION
+    // 4. LIGHTBOX GALLERY MODAL FOR RECOGNITION SECTION
     // ==========================================================================
     
     const modal = document.getElementById('imageModal');
