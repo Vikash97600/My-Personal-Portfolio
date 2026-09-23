@@ -1,6 +1,6 @@
 /* ==========================================================================
    VIKASH R. CHAURASIYA — PROFESSIONAL DEVELOPER PORTFOLIO
-   Design Tokens & Core Stylesheet (Pass 4 - Responsive QA & Accessibility)
+   Design Tokens & Core Stylesheet (Pass 4 - Polish & Enhancements)
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
@@ -222,7 +222,6 @@ a {
     transition: var(--transition);
     cursor: pointer;
     border: 1px solid transparent;
-
 }
 
 .btn .arrow {
@@ -282,7 +281,43 @@ a {
     width: 100%;
 }
 
-/* Technology Pills */
+/* Floating Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--surface-elevated);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 990;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(16px);
+    transition: opacity 300ms var(--ease-editorial), transform 300ms var(--ease-editorial), border-color 250ms ease, background 250ms ease, color 250ms ease;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.back-to-top.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    background: var(--text-primary);
+    color: var(--background);
+    border-color: var(--text-primary);
+    transform: translateY(-4px) scale(1.08);
+}
+
+/* Technology Pills & Interactive Hover */
 .pill {
     display: inline-flex;
     align-items: center;
@@ -293,12 +328,14 @@ a {
     color: var(--text-secondary);
     font-size: 0.84rem;
     font-weight: 400;
-    transition: var(--transition);
+    transition: transform 250ms var(--ease-editorial), border-color 250ms ease, background 250ms ease, color 250ms ease;
 }
 
 .pill:hover {
-    border-color: var(--border-hover);
+    border-color: rgba(139, 92, 246, 0.4);
+    background: rgba(139, 92, 246, 0.08);
     color: var(--text-primary);
+    transform: translateY(-2px);
 }
 
 /* Sticky Navigation & Active Indicator */
@@ -682,7 +719,7 @@ a {
     border-radius: var(--radius-lg);
     padding: 48px;
     margin-bottom: 40px;
-    transition: border-color 300ms var(--ease-editorial), background 300ms var(--ease-editorial), transform 300ms var(--ease-editorial);
+    transition: border-color 300ms var(--ease-editorial), background 300ms var(--ease-editorial), transform 300ms var(--ease-editorial), box-shadow 300ms var(--ease-editorial);
 }
 
 @media (max-width: 767px) {
@@ -694,6 +731,8 @@ a {
 .featured-project:hover {
     border-color: rgba(255, 255, 255, 0.16);
     background: var(--surface-elevated);
+    transform: translateY(-4px) scale(1.005);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
 }
 
 .featured-tag {
@@ -775,6 +814,12 @@ a {
     border-radius: var(--radius-sm);
     font-size: 0.85rem;
     font-weight: 400;
+    transition: transform 250ms var(--ease-editorial), border-color 250ms ease;
+}
+
+.feature-tag-item:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
 }
 
 /* Secondary Projects Grid */
@@ -798,13 +843,14 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: transform 300ms var(--ease-editorial), border-color 300ms var(--ease-editorial), background 300ms var(--ease-editorial);
+    transition: transform 300ms var(--ease-editorial), border-color 300ms var(--ease-editorial), background 300ms var(--ease-editorial), box-shadow 300ms var(--ease-editorial);
 }
 
 .project-card:hover {
     border-color: rgba(255, 255, 255, 0.16);
     background: var(--surface-elevated);
-    transform: translateY(-4px);
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
 }
 
 .project-media {
@@ -893,7 +939,7 @@ a {
     background: var(--accent-cyan);
 }
 
-/* Expertise Section */
+/* Expertise, Education, Certifications & Cards Hover Micro-interactions */
 .expertise-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -906,17 +952,27 @@ a {
     }
 }
 
-.expertise-card {
+.expertise-card,
+.education-card,
+.certification-card,
+.currently-building-card,
+.experience-card {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
     padding: 32px;
-    transition: var(--transition);
+    transition: transform 300ms var(--ease-editorial), border-color 300ms var(--ease-editorial), background 300ms var(--ease-editorial), box-shadow 300ms var(--ease-editorial);
 }
 
-.expertise-card:hover {
+.expertise-card:hover,
+.education-card:hover,
+.certification-card:hover,
+.currently-building-card:hover,
+.experience-card:hover {
     border-color: rgba(255, 255, 255, 0.16);
     background: var(--surface-elevated);
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
 }
 
 .expertise-category-title {
@@ -957,19 +1013,6 @@ a {
 
 .experience-timeline.is-visible::before {
     transform: scaleY(1);
-}
-
-.experience-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 32px;
-    transition: var(--transition);
-}
-
-.experience-card:hover {
-    border-color: rgba(255, 255, 255, 0.16);
-    background: var(--surface-elevated);
 }
 
 .experience-header {
@@ -1032,6 +1075,14 @@ a {
     gap: 40px;
     align-items: center;
     margin-bottom: 32px;
+    transition: transform 300ms var(--ease-editorial), border-color 300ms var(--ease-editorial), background 300ms var(--ease-editorial), box-shadow 300ms var(--ease-editorial);
+}
+
+.recognition-featured:hover {
+    border-color: rgba(255, 255, 255, 0.16);
+    background: var(--surface-elevated);
+    transform: translateY(-4px) scale(1.005);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
 }
 
 @media (max-width: 900px) {
@@ -1189,17 +1240,9 @@ a {
 
 /* Currently Building Section */
 .currently-building-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     padding: 40px;
     max-width: 840px;
-    transition: var(--transition);
-}
-
-.currently-building-card:hover {
-    border-color: rgba(255, 255, 255, 0.16);
-    background: var(--surface-elevated);
 }
 
 .building-title {
@@ -1235,26 +1278,6 @@ a {
 }
 
 /* Education Section */
-.education-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 28px;
-    max-width: 840px;
-}
-
-@media (max-width: 767px) {
-    .education-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-.education-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 32px;
-}
-
 .education-degree {
     font-size: 1.2rem;
     font-weight: 600;
@@ -1291,22 +1314,6 @@ a {
     .certifications-grid {
         grid-template-columns: 1fr;
     }
-}
-
-.certification-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 28px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: var(--transition);
-}
-
-.certification-card:hover {
-    border-color: rgba(255, 255, 255, 0.16);
-    background: var(--surface-elevated);
 }
 
 .cert-issuer {
@@ -1580,5 +1587,17 @@ a {
 
     .status-dot {
         animation: none !important;
+    }
+
+    .back-to-top:hover,
+    .expertise-card:hover,
+    .education-card:hover,
+    .certification-card:hover,
+    .currently-building-card:hover,
+    .experience-card:hover,
+    .project-card:hover,
+    .featured-project:hover,
+    .pill:hover {
+        transform: none !important;
     }
 }
