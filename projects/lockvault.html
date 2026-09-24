@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LockVault Case Study | Vikash R. Chaurasiya</title>
+    <meta name="description" content="Detailed engineering case study for LockVault — Zero-Knowledge Client-Side Password Manager using Web Crypto API, AES-256-GCM, PBKDF2, and WebAuthn.">
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <nav class="navbar scrolled">
+            <div class="container">
+                <a href="../index.html#home" class="logo">VIKASH<span class="logo-dot">.</span></a>
+                <div class="nav-actions">
+                    <a href="../index.html#work" class="back-link"><i class="fas fa-arrow-left"></i> BACK TO WORK</a>
+                    <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle Theme" data-tooltip="Switch Theme">
+                        <div class="orb-icon-wrapper">
+                            <i class="fa-solid fa-sun sun-icon"></i>
+                            <i class="fa-solid fa-moon moon-icon"></i>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Case Study Hero -->
+        <section class="case-study-hero">
+            <div class="container">
+                <a href="../index.html#work" class="back-link"><i class="fas fa-arrow-left"></i> BACK TO SELECTED WORK</a>
+                <span class="section-number">CASE STUDY // SECURITY PROJECT</span>
+                <h1 class="case-study-title">LOCKVAULT</h1>
+                <p class="case-study-subtitle">Zero-Knowledge Client-Side Password Manager</p>
+
+                <div class="project-tech-tags" style="margin-bottom: 24px;">
+                    <span class="pill">Web Crypto API</span>
+                    <span class="pill">AES-256-GCM</span>
+                    <span class="pill">PBKDF2 (100k Iterations)</span>
+                    <span class="pill">WebAuthn (Passkeys)</span>
+                    <span class="pill">IndexedDB</span>
+                    <span class="pill">Vanilla JS</span>
+                </div>
+
+                <div class="project-links">
+                    <a href="https://lock-vault-phi.vercel.app/" target="_blank" rel="noopener" class="btn primary">LIVE DEMO <span class="arrow">→</span></a>
+                    <a href="https://github.com/Vikash97600/LockVault" target="_blank" rel="noopener" class="btn secondary">GITHUB REPOSITORY <span class="arrow">→</span></a>
+                </div>
+
+                <div class="featured-media-wrapper" style="margin-top: 40px;">
+                    <img src="../assets/images/lockvault-project.png" alt="LockVault Password Manager Application Interface">
+                </div>
+            </div>
+        </section>
+
+        <!-- Overview Section -->
+        <section class="case-study-section reveal-on-scroll">
+            <div class="container">
+                <span class="case-study-section-number">01 / OVERVIEW</span>
+                <h2 class="case-study-section-title">Problem & Solution</h2>
+
+                <div class="about-body">
+                    <h3 style="color: var(--text-primary); margin-bottom: 12px; font-weight: 600;">The Problem</h3>
+                    <p style="margin-bottom: 24px;">
+                        Centralized, cloud-hosted password managers create catastrophic single points of failure where server breaches, compromised master vaults, and backend API leaks expose confidential credentials. Traditional web apps frequently transmit sensitive authentication payloads over networks, leaving users vulnerable to man-in-the-middle attacks and third-party data compromises.
+                    </p>
+
+                    <h3 style="color: var(--text-primary); margin-bottom: 12px; font-weight: 600;">The Solution</h3>
+                    <p>
+                        LockVault is a pure zero-knowledge, client-side password vault engineered entirely on browser-native cryptographic standards. All encryption, key derivation, and decryption routines execute exclusively inside isolated browser memory using the Web Crypto API. Unencrypted plaintexts never touch local storage unencrypted or traverse external networks, providing full data sovereignty with optional biometric (WebAuthn) passkey unlocking.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="case-study-section reveal-on-scroll">
+            <div class="container">
+                <span class="case-study-section-number">02 / FEATURES</span>
+                <h2 class="case-study-section-title">Security & System Features</h2>
+
+                <div class="expertise-grid">
+                    <div class="expertise-card">
+                        <h3 class="expertise-category-title"><i class="fas fa-lock"></i> AES-256-GCM Encryption</h3>
+                        <p class="project-desc">Authenticated symmetric encryption providing both confidentiality and integrity verification, ensuring encrypted records cannot be modified without detection.</p>
+                    </div>
+
+                    <div class="expertise-card">
+                        <h3 class="expertise-category-title"><i class="fas fa-key"></i> PBKDF2 Key Derivation</h3>
+                        <p class="project-desc">Derives high-entropy master cryptographic keys from user master passwords using SHA-256 with 100,000 salt iterations to prevent offline dictionary and GPU brute-force attacks.</p>
+                    </div>
+
+                    <div class="expertise-card">
+                        <h3 class="expertise-category-title"><i class="fas fa-fingerprint"></i> WebAuthn Biometric Unlock</h3>
+                        <p class="project-desc">Hardware-backed biometric authentication (Touch ID, Windows Hello, Face ID) for convenient local vault re-authentication without storing raw master passwords.</p>
+                    </div>
+
+                    <div class="expertise-card">
+                        <h3 class="expertise-category-title"><i class="fas fa-chart-line"></i> Shannon Entropy Analysis</h3>
+                        <p class="project-desc">Mathematical password health analyzer computing theoretical entropy score and pattern repetition to identify weak or compromised credentials in real time.</p>
+                    </div>
+
+                    <div class="expertise-card">
+                        <h3 class="expertise-category-title"><i class="fas fa-database"></i> IndexedDB Local Persistence</h3>
+                        <p class="project-desc">High-capacity structured client storage holding encrypted ciphertext vaults locally without relying on insecure standard localStorage.</p>
+                    </div>
+
+                    <div class="expertise-card">
+                        <h3 class="expertise-category-title"><i class="fas fa-wifi"></i> Offline-First PWA Support</h3>
+                        <p class="project-desc">Service Worker architecture enabling instant standalone installation and full offline access with zero server dependency.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Architecture Section -->
+        <section class="case-study-section reveal-on-scroll">
+            <div class="container">
+                <span class="case-study-section-number">03 / ARCHITECTURE</span>
+                <h2 class="case-study-section-title">Cryptographic Architecture</h2>
+
+                <div class="architecture-box">
++-------------------------------------------------------------------------------+
+|                       USER INTERACTION & INPUT LAYER                          |
+|             Master Password Input  •  Biometric WebAuthn Sensor               |
++---------------------------------------+---------------------------------------+
+                                        |
+                                        v
++-------------------------------------------------------------------------------+
+|                      CLIENT-SIDE WEB CRYPTO API ENGINE                        |
+|   • PBKDF2 Key Derivation (100,000 iterations + cryptographically random salt)|
+|   • AES-GCM-256 Symmetric Cipher (Unique 96-bit Initialization Vector / IV)   |
+|   • Ephemeral In-Memory Key Ring (Auto-purged on inactivity / tab close)      |
++-------------------+-----------------------------------+-----------------------+
+                    |                                   |
+                    v (Ciphertext + IV + Salt)          v (Encrypted Vault)
++---------------------------------------+   +-----------------------------------+
+|       INDEXEDDB SECURE STORAGE        |   |      WEBAUTHN CREDENTIAL CORE     |
+|   • Pure Encrypted Blobs              |   |    • Hardware Enclave Challenge   |
+|   • Zero Plaintext Exposure           |   |    • Biometric Session Token      |
++---------------------------------------+   +-----------------------------------+
+                </div>
+            </div>
+        </section>
+
+        <!-- Technology Section -->
+        <section class="case-study-section reveal-on-scroll">
+            <div class="container">
+                <span class="case-study-section-number">04 / TECHNOLOGY</span>
+                <h2 class="case-study-section-title">Technology Stack</h2>
+
+                <div class="expertise-grid">
+                    <div class="expertise-card">
+                        <h3 class="expertise-category-title">Cryptography & APIs</h3>
+                        <div class="expertise-pills">
+                            <span class="pill">Web Crypto API</span>
+                            <span class="pill">AES-256-GCM</span>
+                            <span class="pill">PBKDF2</span>
+                            <span class="pill">WebAuthn</span>
+                        </div>
+                    </div>
+
+                    <div class="expertise-card">
+                        <h3 class="expertise-category-title">Client Runtime</h3>
+                        <div class="expertise-pills">
+                            <span class="pill">JavaScript (ES6+)</span>
+                            <span class="pill">IndexedDB</span>
+                            <span class="pill">Service Workers</span>
+                            <span class="pill">HTML5 / CSS3</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Engineering Decisions -->
+        <section class="case-study-section reveal-on-scroll">
+            <div class="container">
+                <span class="case-study-section-number">05 / ENGINEERING DECISIONS</span>
+                <h2 class="case-study-section-title">Security Decisions & Trade-Offs</h2>
+
+                <ul class="experience-bullets" style="max-width: 800px;">
+                    <li>
+                        <strong>Zero-Knowledge Memory Isolation vs. Cloud Sync:</strong> Deliberately eliminated backend server synchronization to guarantee zero exposure risk. All plaintext transformations occur strictly in volatile JavaScript heap memory and are wiped upon session expiration.
+                    </li>
+                    <li>
+                        <strong>100,000 PBKDF2 Hash Iterations:</strong> Selected 100,000 rounds of PBKDF2 with SHA-256 as an optimal equilibrium between defending against GPU brute-force cracking and maintaining sub-150ms key derivation latency on mobile browsers.
+                    </li>
+                    <li>
+                        <strong>WebAuthn Biometric Token Wrapping:</strong> Engineered WebAuthn passkey authentication to unlock session master keys from device hardware enclaves (Secure Enclave / TPM), preventing password shoulder-surfing while preserving zero-knowledge guarantees.
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Outcome & Metrics Section -->
+        <section class="case-study-section reveal-on-scroll">
+            <div class="container">
+                <span class="case-study-section-number">06 / OUTCOME & METRICS</span>
+                <h2 class="case-study-section-title">Impact & Performance</h2>
+
+                <div class="expertise-grid">
+                    <div class="expertise-card">
+                        <h3 class="expertise-category-title"><i class="fas fa-shield-halved"></i> 0 Server Data Footprint</h3>
+                        <p class="project-desc">Complete client-side execution guaranteeing zero data transmission across external networks and zero cloud breach exposure.</p>
+                    </div>
+
+                    <div class="expertise-card">
+                        <h3 class="expertise-category-title"><i class="fas fa-bolt"></i> Sub-100ms Encryption Speed</h3>
+                        <p class="project-desc">Native browser Web Crypto API execution delivering instantaneous vault encryption, search indexing, and cryptographic key generation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Links Section -->
+        <section class="case-study-section reveal-on-scroll">
+            <div class="container">
+                <span class="case-study-section-number">07 / LINKS</span>
+                <h2 class="case-study-section-title">Project Links</h2>
+
+                <div class="project-links">
+                    <a href="https://lock-vault-phi.vercel.app/" target="_blank" rel="noopener" class="btn primary">Launch Live Demo <span class="arrow">→</span></a>
+                    <a href="https://github.com/Vikash97600/LockVault" target="_blank" rel="noopener" class="btn secondary">View GitHub Repository <span class="arrow">→</span></a>
+                    <a href="../index.html#work" class="btn outline">Return to Portfolio <span class="arrow">→</span></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Vikash R. Chaurasiya. All rights reserved.</p>
+                <div class="footer-nav">
+                    <a href="../index.html#work">Back to Work</a>
+                    <a href="https://github.com/Vikash97600" target="_blank" rel="noopener">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

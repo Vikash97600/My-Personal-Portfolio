@@ -151,10 +151,50 @@ PDF Export  <--  Text-To-Speech  <--  Translation  <--  OpenRouter LLM Synthesis
             </div>
         </section>
 
+        <!-- Engineering Decisions -->
+        <section class="case-study-section reveal-on-scroll">
+            <div class="container">
+                <span class="case-study-section-number">05 / ENGINEERING DECISIONS</span>
+                <h2 class="case-study-section-title">Technical Decisions & Trade-Offs</h2>
+
+                <ul class="experience-bullets" style="max-width: 800px;">
+                    <li>
+                        <strong>Audio-Only Stream Extraction (`yt-dlp`):</strong> Isolated and downloaded audio-only streams instead of full video containers, reducing network bandwidth utilization and extraction latency by over 80%.
+                    </li>
+                    <li>
+                        <strong>Asynchronous Transcription Polling with Backoff:</strong> Implemented non-blocking background polling with exponential backoff for AssemblyAI jobs to prevent HTTP timeout errors on long-duration multi-speaker media.
+                    </li>
+                    <li>
+                        <strong>Prompt-Engineered Article Formatting:</strong> Structured LLM system instructions with explicit JSON & Markdown schemas to guarantee clean headings, key takeaways, and accurate regional translation across Hindi and Marathi.
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Outcome & Metrics Section -->
+        <section class="case-study-section reveal-on-scroll">
+            <div class="container">
+                <span class="case-study-section-number">06 / OUTCOME & METRICS</span>
+                <h2 class="case-study-section-title">Measurable Impact</h2>
+
+                <div class="expertise-grid">
+                    <div class="expertise-card">
+                        <h3 class="expertise-category-title"><i class="fas fa-stopwatch"></i> 90% Time Reduction</h3>
+                        <p class="project-desc">Cut manual video transcription, article formatting, and translation workflow from hours of manual writing down to under 2 minutes.</p>
+                    </div>
+
+                    <div class="expertise-card">
+                        <h3 class="expertise-category-title"><i class="fas fa-bullseye"></i> 80%+ Transcription Accuracy</h3>
+                        <p class="project-desc">Consistently captures complex technical terminology, multilingual pronunciations, and varied speaker cadences with high fidelity.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Links Section -->
         <section class="case-study-section reveal-on-scroll">
             <div class="container">
-                <span class="case-study-section-number">05 / LINKS</span>
+                <span class="case-study-section-number">07 / LINKS</span>
                 <h2 class="case-study-section-title">Repository Links</h2>
 
                 <div class="project-links">

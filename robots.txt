@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vikash97600.github.io/My-Personal-Portfolio/sitemap.xml
