@@ -268,10 +268,14 @@ a {
 .btn.primary {
     background: var(--text-primary);
     color: var(--background);
+    border: 1px solid transparent;
 }
 
 .btn.primary:hover {
-    background: #ffffff;
+    background: var(--accent-purple);
+    color: #ffffff;
+    border-color: var(--accent-purple);
+    box-shadow: 0 4px 16px rgba(139, 92, 246, 0.35);
 }
 
 .btn.secondary {
@@ -281,8 +285,10 @@ a {
 }
 
 .btn.secondary:hover {
-    border-color: var(--border-hover);
-    background: #171b28;
+    border-color: var(--accent-purple);
+    background: rgba(139, 92, 246, 0.12);
+    color: var(--text-primary);
+    box-shadow: 0 4px 16px rgba(139, 92, 246, 0.2);
 }
 
 .btn.outline {
@@ -293,7 +299,8 @@ a {
 
 .btn.outline:hover {
     color: var(--text-primary);
-    border-color: var(--border-hover);
+    border-color: var(--accent-purple);
+    background: rgba(139, 92, 246, 0.08);
 }
 
 .btn.small {
@@ -324,7 +331,7 @@ a {
     opacity: 0;
     visibility: hidden;
     transform: translateY(16px);
-    transition: opacity 300ms var(--ease-editorial), transform 300ms var(--ease-editorial), border-color 250ms ease, background 250ms ease, color 250ms ease;
+    transition: opacity 300ms var(--ease-editorial), transform 300ms var(--ease-editorial), border-color 250ms ease, background 250ms ease, color 250ms ease, box-shadow 250ms ease;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
@@ -335,10 +342,11 @@ a {
 }
 
 .back-to-top:hover {
-    background: var(--text-primary);
-    color: var(--background);
-    border-color: var(--text-primary);
+    background: var(--accent-purple);
+    color: #ffffff;
+    border-color: var(--accent-purple);
     transform: translateY(-4px) scale(1.08);
+    box-shadow: 0 8px 24px rgba(139, 92, 246, 0.4);
 }
 
 /* Technology Pills & Interactive Hover */
@@ -727,7 +735,8 @@ a {
 
 .filter-btn:hover {
     color: var(--text-primary);
-    border-color: var(--border-hover);
+    border-color: var(--accent-purple);
+    background: rgba(139, 92, 246, 0.08);
 }
 
 .filter-btn.active {
@@ -1252,6 +1261,13 @@ a {
     transition: var(--transition);
 }
 
+.modal-close:hover, .modal-nav:hover {
+    background: var(--accent-purple);
+    color: #ffffff;
+    border-color: var(--accent-purple);
+    box-shadow: 0 4px 16px rgba(139, 92, 246, 0.35);
+}
+
 .modal-close { top: -20px; right: -20px; }
 .modal-nav.prev { left: -60px; top: 50%; transform: translateY(-50%); }
 .modal-nav.next { right: -60px; top: 50%; transform: translateY(-50%); }
@@ -1368,7 +1384,7 @@ a {
 }
 
 .cert-link:hover {
-    color: var(--text-primary);
+    color: var(--accent-purple);
 }
 
 /* Contact Section */
@@ -1525,7 +1541,7 @@ a {
 }
 
 .back-link:hover {
-    color: var(--text-primary);
+    color: var(--accent-purple);
 }
 
 .case-study-title {
