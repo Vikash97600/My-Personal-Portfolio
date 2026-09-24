@@ -1,27 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
   <url>
-    <loc>https://vikash97600.github.io/My-Personal-Portfolio/</loc>
+    <loc>https://vikash-personal-portfolio.netlify.app/</loc>
     <lastmod>2026-09-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
   </url>
+
   <url>
-    <loc>https://vikash97600.github.io/My-Personal-Portfolio/projects/panchayat.html</loc>
+    <loc>https://vikash-personal-portfolio.netlify.app/projects/panchayat.html</loc>
     <lastmod>2026-09-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
+
   <url>
-    <loc>https://vikash97600.github.io/My-Personal-Portfolio/projects/ai-blog-generator.html</loc>
+    <loc>https://vikash-personal-portfolio.netlify.app/projects/ai-blog-generator.html</loc>
     <lastmod>2026-09-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
+
   <url>
-    <loc>https://vikash97600.github.io/My-Personal-Portfolio/projects/lockvault.html</loc>
+    <loc>https://vikash-personal-portfolio.netlify.app/projects/lockvault.html</loc>
     <lastmod>2026-09-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
+
 </urlset>

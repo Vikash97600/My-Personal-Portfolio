@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://vikash97600.github.io/My-Personal-Portfolio/sitemap.xml
+Sitemap: https://vikash-personal-portfolio.netlify.app/sitemap.xml
