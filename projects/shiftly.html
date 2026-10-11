@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHIFTLY Case Study | Vikash R. Chaurasiya</title>
+    <meta name="description" content="Detailed engineering case study for SHIFTLY — Location-Based, Swipe-to-Hire Part-Time Job Marketplace built with Django, MySQL, and Bootstrap 5.">
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <nav class="navbar scrolled">
+            <div class="container">
+                <a href="../index.html#home" class="logo">VIKASH<span class="logo-dot">.</span></a>
+                <div class="nav-actions">
+                    <a href="../index.html#work" class="back-link"><i class="fas fa-arrow-left"></i> BACK TO WORK</a>
+                    <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle Theme" data-tooltip="Switch Theme">
+                        <div class="orb-icon-wrapper">
+                            <i class="fa-solid fa-sun sun-icon"></i>
+                            <i class="fa-solid fa-moon moon-icon"></i>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Case Study Hero -->
+        <section class="case-study-hero">
+            <div class="container">
+                <a href="../index.html#work" class="back-link"><i class="fas fa-arrow-left"></i> BACK TO SELECTED WORK</a>
+                <span class="section-number">CASE STUDY // FULL-STACK WEB APPLICATION</span>
+                <h1 class="case-study-title">SHIFTLY</h1>
+                <p class="case-study-subtitle">Location-Based, Swipe-to-Hire Part-Time Job Marketplace</p>
+
+                <div class="project-tech-tags" style="margin-bottom: 24px;">
+                    <span class="pill">Python</span>
+                    <span class="pill">Django</span>
+                    <span class="pill">MySQL</span>
+                    <span class="pill">Bootstrap 5</span>
+                    <span class="pill">JavaScript</span>
+                    <span class="pill">HTML5 · CSS3</span>
+                    <span class="pill">Role-Based Access Control</span>
+                    <span class="pill">Location-Aware Matching</span>
+                </div>
+
+                <div class="project-links">
+                    <a href="https://github.com/Vikash97600/SHIFTLY" target="_blank" rel="noopener" class="btn primary">GITHUB REPOSITORY <span class="arrow">→</span></a>
+                    <a href="../index.html#work" class="btn outline">RETURN TO PORTFOLIO <span class="arrow">→</span></a>
+                </div>
+
+                <div class="featured-media-wrapper" style="margin-top: 40px;">
+                    <img src="../assets/images/shiftly.png" alt="SHIFTLY Employer Shift Management and Hiring Overview Dashboard">
+                </div>
+            </div>
+        </section>
+
+        <!-- Overview Section -->
+        <section class="case-study-section reveal-on-scroll">
+            <div class="container">
+                <span class="case-study-section-number">01 / OVERVIEW</span>
+                <h2 class="case-study-section-title">Problem & Solution</h2>
+
+                <div class="about-body">
+                    <h3 style="color: var(--text-primary); margin-bottom: 12px; font-weight: 600;">The Problem</h3>
+                    <p style="margin-bottom: 24px;">
+                        College students frequently struggle to discover flexible, hyper-local employment opportunities that conform to irregular academic schedules and commute constraints. Concurrently, local businesses face high friction sourcing dependable temporary talent, managing shift allocations, and filtering unverified applicants through traditional, cumbersome hiring pipelines.
+                    </p>
+
+                    <h3 style="color: var(--text-primary); margin-bottom: 12px; font-weight: 600;">The Solution</h3>
+                    <p>
+                        SHIFTLY is a location-aware hiring platform designed to connect college students with local businesses offering flexible part-time shifts and freelance opportunities. Its swipe-based job discovery experience helps students explore relevant opportunities based on their skills, availability, preferences, and location. Businesses can publish job openings, manage hiring workflows, and discover suitable candidates, while an admin-controlled verification system helps establish trust between students and employers. The platform is designed around configurable hiring-radius filtering, role-based access control, reputation scoring, and experience-based skill badges to support a more accessible and reliable part-time job marketplace.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="case-study-section reveal-on-scroll">
+            <div class="container">
+                <span class="case-study-section-number">02 / FEATURES</span>
+                <h2 class="case-study-section-title">Core System Features</h2>
+
+                <div class="expertise-grid">
+                    <div class="expertise-card">
+                        <h3 class="expertise-category-title"><i class="fas fa-location-dot"></i> Location-Based Job Matching</h3>
+                        <p class="project-desc">Filters eligible shifts by calculating proximity between student coordinates and business locations against custom employer hiring radiuses, allowing remote roles to bypass geographic boundaries.</p>
+                    </div>
+
+                    <div class="expertise-card">
+                        <h3 class="expertise-category-title"><i class="fas fa-hand-pointer"></i> Swipe-to-Hire Discovery</h3>
+                        <p class="project-desc">Provides a fast, mobile-friendly discovery deck where candidates can review shift schedules, hourly wages, and duties, swiping to express interest or dismiss opportunities.</p>
+                    </div>
+
+                    <div class="expertise-card">
+                        <h3 class="expertise-category-title"><i class="fas fa-user-shield"></i> Role-Based Access Control</h3>
+                        <p class="project-desc">Strict server-side access segregation isolating Student candidate workflows, Employer/Business management dashboards, and Administrator moderation portals.</p>
+                    </div>
+
+                    <div class="expertise-card">
+                        <h3 class="expertise-category-title"><i class="fas fa-badge-check"></i> Business Verification Workflow</h3>
+                        <p class="project-desc">Credential verification lifecycle placing newly registered enterprises in pending state until platform admins evaluate business legitimacy and grant publishing rights.</p>
+                    </div>
+
+                    <div class="expertise-card">
+                        <h3 class="expertise-category-title"><i class="fas fa-star-half-stroke"></i> Reputation & Trust Scoring</h3>
+                        <p class="project-desc">Dual reputation model tracking payment reliability and job accuracy for businesses alongside attendance, verified skill badges, and shift completion rates for student applicants.</p>
+                    </div>
+
+                    <div class="expertise-card">
+                        <h3 class="expertise-category-title"><i class="fas fa-chart-line"></i> Admin Center & System Audit Log</h3>
+                        <p class="project-desc">Centralized operational ledger and management dashboard offering live analytics, user activation toggles, business approvals, and immutable system audit logging.</p>
+                    </div>
+                </div>
+
+                <div class="featured-media-wrapper" style="margin-top: 40px;">
+                    <img src="../assets/images/shiftly-admin.png" alt="SHIFTLY Admin Center Analytics and System Activity Audit Log">
+                </div>
+            </div>
+        </section>
+
+        <!-- Architecture Section -->
+        <section class="case-study-section reveal-on-scroll">
+            <div class="container">
+                <span class="case-study-section-number">03 / ARCHITECTURE</span>
+                <h2 class="case-study-section-title">System Architecture</h2>
+
+                <div class="architecture-box">
++-------------------------------------------------------------------------------+
+|                       CLIENT INTERACTION & PRESENTATION LAYER                 |
+|       Student Swipe Discovery  •  Employer Dashboard  •  Admin Center         |
++---------------------------------------+---------------------------------------+
+                                        | HTTP Form & Session Requests
+                                        v
++-------------------------------------------------------------------------------+
+|                          DJANGO APPLICATION BACKEND                           |
+|   • Authentication & RBAC Middleware   • Business Verification Gatekeeper     |
+|   • Location-Aware Proximity Filter    • Shift Slot & Application State Engine|
+|   • Trust & Reputation Calculator      • Audit Activity Logger                |
++-------------------+-----------------------------------+-----------------------+
+                    |                                   |
+                    v                                   v
++---------------------------------------+   +-----------------------------------+
+|          MYSQL RELATIONAL STORE       |   |      GEOLOCATION & REPUTATION     |
+|   • Users, Roles & Profiles           |   |   • Geographic Coordinates        |
+|   • Shifts, Applications & Escrows    |   |   • Configurable Hiring Radiuses  |
+|   • Verification Records & Audit Logs |   |   • Verified Skill Badges         |
++---------------------------------------+   +-----------------------------------+
+                </div>
+            </div>
+        </section>
+
+        <!-- Technology Section -->
+        <section class="case-study-section reveal-on-scroll">
+            <div class="container">
+                <span class="case-study-section-number">04 / TECHNOLOGY</span>
+                <h2 class="case-study-section-title">Technology Stack</h2>
+
+                <div class="expertise-grid">
+                    <div class="expertise-card">
+                        <h3 class="expertise-category-title"><i class="fas fa-laptop-code"></i> Frontend Presentation</h3>
+                        <div class="expertise-pills">
+                            <span class="pill">HTML5</span>
+                            <span class="pill">CSS3</span>
+                            <span class="pill">JavaScript (Vanilla JS)</span>
+                            <span class="pill">Bootstrap 5</span>
+                        </div>
+                    </div>
+
+                    <div class="expertise-card">
+                        <h3 class="expertise-category-title"><i class="fas fa-server"></i> Backend & Application Logic</h3>
+                        <div class="expertise-pills">
+                            <span class="pill">Python</span>
+                            <span class="pill">Django Framework</span>
+                            <span class="pill">Django Auth & RBAC</span>
+                            <span class="pill">CSRF & Session Security</span>
+                        </div>
+                    </div>
+
+                    <div class="expertise-card">
+                        <h3 class="expertise-category-title"><i class="fas fa-database"></i> Database & Persistence</h3>
+                        <div class="expertise-pills">
+                            <span class="pill">MySQL</span>
+                            <span class="pill">Django ORM</span>
+                            <span class="pill">Relational Schemas</span>
+                            <span class="pill">Audit Logging</span>
+                        </div>
+                    </div>
+
+                    <div class="expertise-card">
+                        <h3 class="expertise-category-title"><i class="fas fa-compass"></i> Matching & Verification</h3>
+                        <div class="expertise-pills">
+                            <span class="pill">Location Radius Filtering</span>
+                            <span class="pill">Employer Verification Queue</span>
+                            <span class="pill">Reputation Metrics</span>
+                            <span class="pill">Skill Badges</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Engineering Decisions -->
+        <section class="case-study-section reveal-on-scroll">
+            <div class="container">
+                <span class="case-study-section-number">05 / ENGINEERING DECISIONS</span>
+                <h2 class="case-study-section-title">Engineering Decisions & Trade-Offs</h2>
+
+                <ul class="experience-bullets" style="max-width: 800px;">
+                    <li>
+                        <strong>Role-Based Separation of Portals:</strong> Distinct URL routing, view dispatchers, and permission decorators ensure employers, students, and administrators operate in strictly bounded context spaces with zero cross-tenant authorization leakage.
+                    </li>
+                    <li>
+                        <strong>Admin-Controlled Business Verification Gate:</strong> New employer accounts remain in an inactive/pending review state until verified by an authorized administrator, preventing fraudulent job postings and protecting students.
+                    </li>
+                    <li>
+                        <strong>Server-Validated Location Filtering:</strong> Job eligibility criteria and radius parameters are calculated and enforced server-side against job configurations, allowing remote jobs to bypass distance limits safely while maintaining accurate local discovery.
+                    </li>
+                    <li>
+                        <strong>Transparent Activity Audit Logging:</strong> Critical moderation interventions (such as user status toggles or account removals) are recorded with timestamps, actor IDs, target records, and change summaries in an immutable audit ledger.
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Outcome & Capabilities Section -->
+        <section class="case-study-section reveal-on-scroll">
+            <div class="container">
+                <span class="case-study-section-number">06 / CAPABILITIES</span>
+                <h2 class="case-study-section-title">Platform Highlights</h2>
+
+                <div class="expertise-grid">
+                    <div class="expertise-card">
+                        <h3 class="expertise-category-title"><i class="fas fa-briefcase"></i> Employer Operational Hub</h3>
+                        <p class="project-desc">Comprehensive dashboard featuring active shift slot tracking, applicant review pipelines, trust badge scoring, and operational shift management.</p>
+                    </div>
+
+                    <div class="expertise-card">
+                        <h3 class="expertise-category-title"><i class="fas fa-sliders"></i> Administrative Moderation</h3>
+                        <p class="project-desc">High-level visibility into platform revenue metrics, user base distribution, active job counters, pending business approvals, and live user toggles.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Links Section -->
+        <section class="case-study-section reveal-on-scroll">
+            <div class="container">
+                <span class="case-study-section-number">07 / LINKS</span>
+                <h2 class="case-study-section-title">Project Links</h2>
+
+                <div class="project-links">
+                    <a href="https://github.com/Vikash97600/SHIFTLY" target="_blank" rel="noopener" class="btn primary">View GitHub Repository <span class="arrow">→</span></a>
+                    <a href="../index.html#work" class="btn outline">Return to Portfolio <span class="arrow">→</span></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Vikash R. Chaurasiya. All rights reserved.</p>
+                <div class="footer-nav">
+                    <a href="../index.html#work">Back to Work</a>
+                    <a href="https://github.com/Vikash97600" target="_blank" rel="noopener">GitHub</a>
+                    <a href="https://wa.me/919372483191?text=Hi%20Vikash,%20I%20saw%20your%20SHIFTLY%20case%20study%20and%20would%20like%20to%20connect." target="_blank" rel="noopener">WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+
+</html>
