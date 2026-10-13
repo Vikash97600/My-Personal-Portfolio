@@ -144,56 +144,48 @@ exports.handler = async (event, context) => {
       };
     }
 
-    // Check for GROQ API Key
-    const apiKey = process.env.GROQ_API_KEY;
-    if (!apiKey) {
+    // Check for GROQ API Key and sanitize (remove whitespace or quotes)
+    const rawApiKey = process.env.GROQ_API_KEY;
+    if (!rawApiKey) {
       return {
         statusCode: 200,
         headers,
         body: JSON.stringify({
-          reply: "Hello! I am Vikash's AI Assistant. The chatbot backend is successfully set up! To activate live AI responses, please add your `GROQ_API_KEY` into your Netlify dashboard under **Site configuration > Environment variables**. Once configured, I will immediately start responding using Groq's high-speed Llama 3 model!"
+          reply: "Hello! I am Vikash's AI Assistant. The chatbot backend is successfully set up! To activate live AI responses, please add your `GROQ_API_KEY` into your Netlify dashboard under **Site configuration > Environment variables** and trigger a deploy. Once configured, I will immediately start responding using Groq's high-speed Llama 3 model!"
         })
       };
     }
 
-    // Sanitize conversation history (keep last 6 turns max)
+    const apiKey = rawApiKey.trim().replace(/^["']|["']$/g, '');
+
+    // Sanitize conversation history (keep last 4 turns to conserve tokens)
     const rawHistory = Array.isArray(body.history) ? body.history : [];
     const sanitizedHistory = rawHistory
-      .slice(-6)
+      .slice(-4)
       .map(item => ({
         role: item.role === 'assistant' ? 'assistant' : 'user',
-        content: String(item.content || '').slice(0, 800)
+        content: String(item.content || '').slice(0, 600)
       }));
 
-    // Construct payload for Groq OpenAI-compatible endpoint
-    const groqPayload = {
-      model: 'llama-3.3-70b-versatile',
-      messages: [
-        { role: 'system', content: VIKASH_PROFILE_KNOWLEDGE },
-        ...sanitizedHistory,
-        { role: 'user', content: userMessage.slice(0, 800) }
-      ],
-      temperature: 0.4,
-      max_tokens: 600
-    };
+    // Primary model: llama-3.1-8b-instant (Fastest & 30,000 TPM limit on Groq free tier)
+    // Fallback model: llama-3.3-70b-versatile
+    const modelsToTry = ['llama-3.1-8b-instant', 'llama-3.3-70b-versatile'];
+    let lastError = null;
 
-    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`
-      },
-      body: JSON.stringify(groqPayload)
-    });
+    for (const model of modelsToTry) {
+      try {
+        const groqPayload = {
+          model,
+          messages: [
+            { role: 'system', content: VIKASH_PROFILE_KNOWLEDGE },
+            ...sanitizedHistory,
+            { role: 'user', content: userMessage.slice(0, 600) }
+          ],
+          temperature: 0.4,
+          max_tokens: 500
+        };
 
-    if (!response.ok) {
-      const errText = await response.text();
-      console.error('Groq API Error:', response.status, errText);
-
-      // Fallback model if 70b has a temporary quota/issue
-      if (response.status === 404 || response.status === 400) {
-        groqPayload.model = 'llama-3.1-8b-instant';
-        const fallbackRes = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+        const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -201,33 +193,65 @@ exports.handler = async (event, context) => {
           },
           body: JSON.stringify(groqPayload)
         });
-        if (fallbackRes.ok) {
-          const fallbackData = await fallbackRes.json();
-          const reply = fallbackData.choices?.[0]?.message?.content || "No response received.";
+
+        if (response.ok) {
+          const data = await response.json();
+          const reply = data.choices?.[0]?.message?.content;
+          if (reply) {
+            return {
+              statusCode: 200,
+              headers,
+              body: JSON.stringify({ reply })
+            };
+          }
+        }
+
+        // If not ok, read error details
+        const errText = await response.text();
+        console.error(`Groq error with model ${model} (status ${response.status}):`, errText);
+
+        let parsedMsg = errText;
+        try {
+          const parsed = JSON.parse(errText);
+          parsedMsg = parsed.error?.message || errText;
+        } catch (_) {}
+
+        lastError = {
+          status: response.status,
+          message: parsedMsg
+        };
+
+        // If unauthorized (401), invalid key: no need to try other models
+        if (response.status === 401) {
           return {
             statusCode: 200,
             headers,
-            body: JSON.stringify({ reply })
+            body: JSON.stringify({
+              reply: `⚠️ **Groq Authentication Error (401)**: ${parsedMsg}.\n\nPlease ensure your \`GROQ_API_KEY\` in Netlify (Site configuration > Environment variables) is a valid, active key from [Groq Console](https://console.groq.com/keys) without extra quotes or spaces, and that you have redeployed your site.`
+            })
           };
         }
-      }
 
-      return {
-        statusCode: 200,
-        headers,
-        body: JSON.stringify({
-          reply: "I am having temporary trouble reaching the Groq inference service right now. Please feel free to check Vikash's projects above or connect with him directly via email (vikashch97600@gmail.com) or WhatsApp (+91 9372483191)!"
-        })
-      };
+      } catch (callErr) {
+        console.error(`Exception calling Groq with model ${model}:`, callErr);
+        lastError = {
+          status: 500,
+          message: callErr.message || 'Network error'
+        };
+      }
     }
 
-    const data = await response.json();
-    const reply = data.choices?.[0]?.message?.content || "I didn't receive a response. Please try again.";
+    // If all models failed, provide the exact diagnosis
+    const errorExplanation = lastError
+      ? `Groq API returned (${lastError.status}): ${lastError.message}`
+      : "Inference service unreachable";
 
     return {
       statusCode: 200,
       headers,
-      body: JSON.stringify({ reply })
+      body: JSON.stringify({
+        reply: `⚠️ I had trouble connecting to Groq. **Detail:** ${errorExplanation}.\n\nIn the meantime, feel free to review Vikash's projects above or connect with him directly via email (vikashch97600@gmail.com) or [WhatsApp](https://wa.me/919372483191)!`
+      })
     };
 
   } catch (error) {
