@@ -167,9 +167,75 @@ exports.handler = async (event, context) => {
         content: String(item.content || '').slice(0, 600)
       }));
 
-    // Primary model: llama-3.1-8b-instant (Fastest & 30,000 TPM limit on Groq free tier)
-    // Fallback model: llama-3.3-70b-versatile
-    const modelsToTry = ['llama-3.1-8b-instant', 'llama-3.3-70b-versatile'];
+    // Dynamically retrieve the models available to this specific API key
+    let modelsToTry = [];
+    let availableModelNames = [];
+
+    try {
+      const modelsRes = await fetch('https://api.groq.com/openai/v1/models', {
+        headers: {
+          'Authorization': `Bearer ${apiKey}`,
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (modelsRes.status === 401) {
+        return {
+          statusCode: 200,
+          headers,
+          body: JSON.stringify({
+            reply: `⚠️ **Groq Authentication Error (401)**: Invalid API Key.\n\nPlease ensure your \`GROQ_API_KEY\` in Netlify (Site configuration > Environment variables) is a valid, active key from [Groq Console](https://console.groq.com/keys) without extra quotes or spaces, and that you have redeployed your site.`
+          })
+        };
+      }
+
+      if (modelsRes.ok) {
+        const modelsData = await modelsRes.json();
+        const list = Array.isArray(modelsData.data) ? modelsData.data : [];
+        availableModelNames = list.map(m => m.id);
+
+        // Filter out whisper, speech, vision-only, or guardrails
+        const validChat = availableModelNames.filter(id =>
+          !id.includes('whisper') &&
+          !id.includes('guard') &&
+          !id.includes('distil')
+        );
+
+        // Score models to prefer fast, high-limit conversational models
+        validChat.sort((a, b) => {
+          const score = id => {
+            if (id.includes('llama-3.1-8b')) return 1;
+            if (id.includes('llama-3.2-3b') || id.includes('llama-3.2-1b')) return 2;
+            if (id.includes('llama-3.3-70b')) return 3;
+            if (id.includes('llama3-8b')) return 4;
+            if (id.includes('llama-3.1-70b')) return 5;
+            if (id.includes('llama3-70b')) return 6;
+            if (id.includes('gemma2')) return 7;
+            if (id.includes('mixtral')) return 8;
+            if (id.includes('qwen')) return 9;
+            return 10;
+          };
+          return score(a) - score(b);
+        });
+
+        if (validChat.length > 0) {
+          modelsToTry = validChat.slice(0, 4); // Pick top 4 best matches
+        }
+      }
+    } catch (e) {
+      console.warn('Could not dynamically list Groq models:', e);
+    }
+
+    // Fallback static list if dynamic discovery was empty or failed
+    if (modelsToTry.length === 0) {
+      modelsToTry = [
+        'llama-3.1-8b-instant',
+        'llama-3.3-70b-versatile',
+        'llama3-8b-8192',
+        'gemma2-9b-it'
+      ];
+    }
+
     let lastError = null;
 
     for (const model of modelsToTry) {
@@ -218,7 +284,8 @@ exports.handler = async (event, context) => {
 
         lastError = {
           status: response.status,
-          message: parsedMsg
+          message: parsedMsg,
+          model
         };
 
         // If unauthorized (401), invalid key: no need to try other models
@@ -236,21 +303,26 @@ exports.handler = async (event, context) => {
         console.error(`Exception calling Groq with model ${model}:`, callErr);
         lastError = {
           status: 500,
-          message: callErr.message || 'Network error'
+          message: callErr.message || 'Network error',
+          model
         };
       }
     }
 
     // If all models failed, provide the exact diagnosis
     const errorExplanation = lastError
-      ? `Groq API returned (${lastError.status}): ${lastError.message}`
+      ? `Groq API returned (${lastError.status}) for ${lastError.model}: ${lastError.message}`
       : "Inference service unreachable";
+
+    const availableInfo = availableModelNames.length > 0
+      ? `\n\n**Models available to your API key:** \`${availableModelNames.join('`, `')}\``
+      : '';
 
     return {
       statusCode: 200,
       headers,
       body: JSON.stringify({
-        reply: `⚠️ I had trouble connecting to Groq. **Detail:** ${errorExplanation}.\n\nIn the meantime, feel free to review Vikash's projects above or connect with him directly via email (vikashch97600@gmail.com) or [WhatsApp](https://wa.me/919372483191)!`
+        reply: `⚠️ I had trouble connecting to Groq. **Detail:** ${errorExplanation}.${availableInfo}\n\nIn the meantime, feel free to review Vikash's projects above or connect with him directly via email (vikashch97600@gmail.com) or [WhatsApp](https://wa.me/919372483191)!`
       })
     };
 
