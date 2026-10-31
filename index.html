@@ -653,25 +653,37 @@
                         </div>
                     </div>
 
-                    <form action="https://formspree.io/f/mvgalzda" method="POST" class="contact-form">
+                    <form id="contactForm" class="contact-form" novalidate>
+                        <!-- Honeypot Anti-Spam Protection (Visually Hidden) -->
+                        <div class="form-group-hp" aria-hidden="true">
+                            <label for="contact_company">Do not fill this field</label>
+                            <input type="text" id="contact_company" name="_gotcha" tabindex="-1" autocomplete="off">
+                        </div>
+
                         <div class="form-group">
                             <label for="name">Your Name</label>
-                            <input type="text" id="name" name="name" placeholder="John Doe" required>
+                            <input type="text" id="name" name="name" placeholder="John Doe" required autocomplete="name">
+                            <span class="field-error" id="nameError">Please enter your name.</span>
                         </div>
 
                         <div class="form-group">
                             <label for="email">Your Email</label>
-                            <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                            <input type="email" id="email" name="email" placeholder="john@example.com" required autocomplete="email">
+                            <span class="field-error" id="emailError">Please enter a valid email address.</span>
                         </div>
 
                         <div class="form-group">
                             <label for="message">Your Message</label>
                             <textarea id="message" name="message" rows="5" placeholder="How can I help you?"
                                 required></textarea>
+                            <span class="field-error" id="messageError">Please enter your message.</span>
                         </div>
 
-                        <button type="submit" class="btn primary full-width">SEND MESSAGE <span
-                                class="arrow">→</span></button>
+                        <button type="submit" id="contactSubmitBtn" class="btn primary full-width">
+                            <span class="btn-text">SEND MESSAGE</span> <span class="arrow">→</span>
+                        </button>
+
+                        <div id="contactStatus" class="contact-status" role="status" aria-live="polite" style="display: none;"></div>
                     </form>
                 </div>
             </div>

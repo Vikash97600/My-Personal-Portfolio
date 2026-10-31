@@ -31,6 +31,14 @@ Innovative Software Developer specializing in Python backend engineering, REST A
    - Institution: Tilak Maharashtra Vidyapeeth University
    - Duration: June 2022 - June 2025
    - Academic Score: CGPA 8.170 / 10
+3. Higher Secondary Certification (H.S.C.)
+   - Institution: Prakash Degree College of Commerce and Science
+   - Duration: June 2021 - June 2022
+   - Academic Score: Percentage 64.50%
+4. Secondary School Certificat (S.S.C.)
+   - Institution: Cosmos High School
+   - Duration: June 2020 - June 2021
+   - Academic Score: Percentage 81.40%
 
 === TECHNICAL SKILLS ===
 - Core Programming: Python (Advanced), C#, Java, JavaScript (ES6+), SQL
@@ -280,7 +288,7 @@ exports.handler = async (event, context) => {
         try {
           const parsed = JSON.parse(errText);
           parsedMsg = parsed.error?.message || errText;
-        } catch (_) {}
+        } catch (_) { }
 
         lastError = {
           status: response.status,

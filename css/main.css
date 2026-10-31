@@ -1470,6 +1470,109 @@ a {
     background: var(--surface-elevated);
 }
 
+.form-group.has-error input,
+.form-group.has-error textarea {
+    border-color: #EF4444 !important;
+}
+
+.field-error {
+    display: none;
+    color: #EF4444;
+    font-size: 0.775rem;
+    margin-top: 6px;
+    font-family: var(--font-mono);
+}
+
+.form-group.has-error .field-error {
+    display: block;
+}
+
+/* Visually hidden honeypot spam field */
+.form-group-hp {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+/* Form submission feedback status */
+.contact-status {
+    margin-top: 20px;
+    padding: 14px 18px;
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    transition: opacity 250ms ease, transform 250ms ease;
+}
+
+.contact-status i {
+    font-size: 1.1rem;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.contact-status.success {
+    background: rgba(52, 211, 153, 0.08);
+    border: 1px solid rgba(52, 211, 153, 0.35);
+    color: #34D399;
+}
+
+.contact-status.error {
+    background: rgba(239, 68, 68, 0.08);
+    border: 1px solid rgba(239, 68, 68, 0.35);
+    color: #F87171;
+}
+
+.contact-status.warning {
+    background: rgba(245, 158, 11, 0.08);
+    border: 1px solid rgba(245, 158, 11, 0.35);
+    color: #FBBF24;
+}
+
+/* Button loading spinner */
+.btn-spinner {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    border-top-color: #FFFFFF;
+    border-radius: 50%;
+    animation: contactSpin 0.75s linear infinite;
+    margin-right: 8px;
+    vertical-align: -2px;
+}
+
+@keyframes contactSpin {
+    to { transform: rotate(360deg); }
+}
+
+/* Light Theme Adjustments for Contact Status */
+[data-theme="light"] .contact-status.success {
+    background: rgba(16, 185, 129, 0.08);
+    border-color: rgba(16, 185, 129, 0.35);
+    color: #065F46;
+}
+
+[data-theme="light"] .contact-status.error {
+    background: rgba(239, 68, 68, 0.08);
+    border-color: rgba(239, 68, 68, 0.35);
+    color: #991B1B;
+}
+
+[data-theme="light"] .contact-status.warning {
+    background: rgba(245, 158, 11, 0.08);
+    border-color: rgba(245, 158, 11, 0.35);
+    color: #92400E;
+}
+
 /* Footer */
 .footer {
     border-top: 1px solid var(--border);

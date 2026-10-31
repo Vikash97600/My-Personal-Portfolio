@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // ==========================================================================
     // 1. STICKY NAVBAR, SCROLL SPY & MOBILE MENU DRAWER
     // ==========================================================================
-    
+
     const navbar = document.getElementById('navbar');
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // ==========================================================================
     // 2. UNIVERSAL SECTION REVEAL SYSTEM & TIMELINE SCALING
     // ==========================================================================
-    
+
     const revealElements = document.querySelectorAll('.reveal-on-scroll');
     const timelineElement = document.querySelector('.experience-timeline');
 
@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // ==========================================================================
     // 3. PROJECT CATEGORY FILTERING (ALL, BACKEND, AI, FULL-STACK)
     // ==========================================================================
-    
+
     const filterButtons = document.querySelectorAll('.filter-btn');
     const filterableProjects = document.querySelectorAll('[data-category]');
 
@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // ==========================================================================
     // 4. LIGHTBOX GALLERY MODAL FOR RECOGNITION SECTION
     // ==========================================================================
-    
+
     const modal = document.getElementById('imageModal');
     if (modal) {
         const modalImage = document.getElementById('modalImage');
@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const prevBtn = document.getElementById('modalPrev');
         const nextBtn = document.getElementById('modalNext');
         const galleryItems = document.querySelectorAll('.gallery-item');
-        
+
         let currentImageIndex = 0;
         let images = [];
 
@@ -309,6 +309,216 @@ document.addEventListener('DOMContentLoaded', function () {
             const activeTheme = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
             const nextTheme = activeTheme === 'light' ? 'dark' : 'light';
             applyTheme(nextTheme, true, e);
+        });
+    }
+
+    // ==========================================================================
+    // 6. CONTACT FORM SUBMISSION TO GOOGLE SHEETS (VIA GOOGLE APPS SCRIPT WEB APP)
+    // ==========================================================================
+
+    const contactForm = document.getElementById('contactForm');
+
+    /**
+     * CONFIGURATION:
+     * Paste your deployed Google Apps Script Web App URL below (starts with https://script.google.com/macros/s/.../exec)
+     */
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxzgeQPspwHhsUlsJkunM2PBsiDxKJGEdVNhXcMGtTGsDWAuxdomPjQ15Xek8GZrcZk/exec';
+
+    if (contactForm) {
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const messageInput = document.getElementById('message');
+        const honeypotInput = document.getElementById('contact_company');
+        const submitBtn = document.getElementById('contactSubmitBtn');
+        const statusBox = document.getElementById('contactStatus');
+
+        const nameError = document.getElementById('nameError');
+        const emailError = document.getElementById('emailError');
+        const messageError = document.getElementById('messageError');
+
+        // RFC 5322 standard email validation regex
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        function setFieldError(input, errorElement, hasError, customMsg) {
+            const formGroup = input ? input.closest('.form-group') : null;
+            if (hasError) {
+                if (formGroup) formGroup.classList.add('has-error');
+                if (errorElement) {
+                    if (customMsg) errorElement.textContent = customMsg;
+                    errorElement.style.display = 'block';
+                }
+            } else {
+                if (formGroup) formGroup.classList.remove('has-error');
+                if (errorElement) errorElement.style.display = 'none';
+            }
+        }
+
+        function clearFieldErrors() {
+            setFieldError(nameInput, nameError, false);
+            setFieldError(emailInput, emailError, false);
+            setFieldError(messageInput, messageError, false);
+        }
+
+        function showStatus(type, message, iconClass) {
+            if (!statusBox) return;
+            statusBox.className = `contact-status ${type}`;
+            statusBox.innerHTML = `
+                <i class="${iconClass}"></i>
+                <div>${message}</div>
+            `;
+            statusBox.style.display = 'flex';
+        }
+
+        function hideStatus() {
+            if (!statusBox) return;
+            statusBox.style.display = 'none';
+            statusBox.innerHTML = '';
+        }
+
+        // Live error clearing as user types
+        if (nameInput) {
+            nameInput.addEventListener('input', () => {
+                if (nameInput.value.trim()) setFieldError(nameInput, nameError, false);
+            });
+        }
+        if (emailInput) {
+            emailInput.addEventListener('input', () => {
+                if (emailRegex.test(emailInput.value.trim())) setFieldError(emailInput, emailError, false);
+            });
+        }
+        if (messageInput) {
+            messageInput.addEventListener('input', () => {
+                if (messageInput.value.trim()) setFieldError(messageInput, messageError, false);
+            });
+        }
+
+        contactForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            clearFieldErrors();
+            hideStatus();
+
+            const nameVal = nameInput ? nameInput.value.trim() : '';
+            const emailVal = emailInput ? emailInput.value.trim() : '';
+            const messageVal = messageInput ? messageInput.value.trim() : '';
+            const honeypotVal = honeypotInput ? honeypotInput.value.trim() : '';
+
+            // 1. Client-Side Input Validation
+            let isValid = true;
+
+            if (!nameVal) {
+                setFieldError(nameInput, nameError, true, 'Please enter your name.');
+                isValid = false;
+            }
+
+            if (!emailVal) {
+                setFieldError(emailInput, emailError, true, 'Please enter your email.');
+                isValid = false;
+            } else if (!emailRegex.test(emailVal)) {
+                setFieldError(emailInput, emailError, true, 'Please enter a valid email address.');
+                isValid = false;
+            }
+
+            if (!messageVal) {
+                setFieldError(messageInput, messageError, true, 'Please enter your message.');
+                isValid = false;
+            }
+
+            if (!isValid) {
+                showStatus(
+                    'error',
+                    'Please fill in all required fields with valid information.',
+                    'fa-solid fa-circle-exclamation'
+                );
+                return;
+            }
+
+            // 2. Spam Honeypot Trap
+            // If filled by a bot, silently fake success without sending to Google Sheets
+            if (honeypotVal !== '') {
+                showStatus(
+                    'success',
+                    'Thank you! Your message has been sent successfully.',
+                    'fa-solid fa-circle-check'
+                );
+                contactForm.reset();
+                return;
+            }
+
+            // 3. Configuration Check
+            if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.includes('PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE')) {
+                showStatus(
+                    'warning',
+                    'Google Apps Script Web App URL is not configured yet. Please deploy your Google Apps Script and update <code>GOOGLE_SCRIPT_URL</code> in <code>js/main.js</code>.',
+                    'fa-solid fa-triangle-exclamation'
+                );
+                return;
+            }
+
+            // 4. Loading State
+            const originalBtnContent = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `
+                <span class="btn-spinner"></span>
+                <span>SENDING...</span>
+            `;
+
+            try {
+                // Cross-Origin submission strategy for Google Apps Script Web App:
+                // Send JSON payload as 'text/plain;charset=utf-8' (CORS simple request)
+                // This avoids the browser sending an OPTIONS preflight request that Google Apps Script does not support.
+                const payload = {
+                    name: nameVal,
+                    email: emailVal,
+                    message: messageVal,
+                    _gotcha: honeypotVal
+                };
+
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'text/plain;charset=utf-8'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                let result;
+                try {
+                    result = await response.json();
+                } catch (parseError) {
+                    result = { status: response.ok ? 'success' : 'error' };
+                }
+
+                if (result && result.status === 'success') {
+                    // Confirmed Success
+                    showStatus(
+                        'success',
+                        'Thank you, Vikash has received your message and will get back to you shortly.',
+                        'fa-solid fa-circle-check'
+                    );
+                    contactForm.reset();
+                    clearFieldErrors();
+                } else {
+                    // Server-side validation or execution error
+                    const serverMsg = (result && result.message) ? result.message : 'Could not save message.';
+                    showStatus(
+                        'error',
+                        `Error: ${serverMsg} Please try again or reach out directly via WhatsApp or Email.`,
+                        'fa-solid fa-circle-exclamation'
+                    );
+                }
+
+            } catch (networkError) {
+                console.error('Contact form submission network error:', networkError);
+                showStatus(
+                    'error',
+                    'Unable to send message due to a network or server error. Please try again or contact Vikash directly via WhatsApp (+91 9372483191) or Email (vikashch97600@gmail.com).',
+                    'fa-solid fa-circle-exclamation'
+                );
+            } finally {
+                // 5. Restore Submit Button State
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnContent;
+            }
         });
     }
 });
