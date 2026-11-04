@@ -26,6 +26,10 @@
                     <a href="#expertise" class="nav-item">Expertise</a>
                     <a href="#experience" class="nav-item">Experience</a>
                     <div class="nav-actions">
+                        <button class="btn-recruiter-digest" id="recruiterDigestNavBtn"
+                            title="60-Second Recruiter Digest">
+                            <span class="zap-icon">⚡</span> <span>Recruiter Digest</span>
+                        </button>
                         <a href="Vikash resume.pdf" target="_blank" class="btn outline small">Resume</a>
                         <a href="#contact" class="btn primary small">Contact</a>
                         <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle Theme"
@@ -38,11 +42,17 @@
                     </div>
                 </div>
 
-                <button class="hamburger" id="hamburger" aria-label="Toggle Navigation Menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
+                <div class="nav-mobile-controls">
+                    <button class="btn-recruiter-mobile-quick" id="recruiterDigestMobileQuickBtn"
+                        aria-label="Open 60-Second Recruiter Digest">
+                        <span class="zap-icon">⚡</span> <span>Digest</span>
+                    </button>
+                    <button class="hamburger" id="hamburger" aria-label="Toggle Navigation Menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
             </div>
         </nav>
     </header>
@@ -54,9 +64,12 @@
             <div class="container">
                 <div class="hero-grid">
                     <div class="hero-content">
-                        <div class="hero-status hero-animate-status">
-                            <span class="status-dot"></span>
-                            <span>AVAILABLE FOR PYTHON / BACKEND OPPORTUNITIES</span>
+                        <div class="hero-status-row hero-animate-status">
+                            <div class="hero-status">
+                                <span class="status-dot"></span>
+                                <span>AVAILABLE FOR PYTHON / BACKEND OPPORTUNITIES</span>
+                            </div>
+
                         </div>
 
                         <h1 class="hero-title hero-animate-title">
@@ -77,6 +90,7 @@
                         </div>
 
                         <div class="hero-actions hero-animate-actions">
+
                             <a href="#work" class="btn primary">VIEW SELECTED WORK <span class="arrow">→</span></a>
                             <a href="https://github.com/Vikash97600" target="_blank" rel="noopener"
                                 class="btn secondary">GITHUB <span class="arrow">→</span></a>
@@ -245,16 +259,20 @@
                     <!-- SHIFTLY -->
                     <article class="project-card reveal-on-scroll stagger-2" data-category="backend full-stack">
                         <div class="project-media">
-                            <img src="assets/images/shiftly.png" alt="SHIFTLY Part-Time Job Marketplace Platform Dashboard"
-                                loading="lazy">
+                            <img src="assets/images/shiftly.png"
+                                alt="SHIFTLY Part-Time Job Marketplace Platform Dashboard" loading="lazy">
                         </div>
                         <div class="project-content">
                             <div>
                                 <h3 class="project-title">SHIFTLY</h3>
                                 <p class="project-subtitle">Location-Based, Swipe-to-Hire Part-Time Job Marketplace</p>
-                                <div class="featured-tech-line">HTML5 · CSS3 · JavaScript · Bootstrap 5 · Python · Django · MySQL</div>
+                                <div class="featured-tech-line">HTML5 · CSS3 · JavaScript · Bootstrap 5 · Python ·
+                                    Django · MySQL</div>
                                 <p class="project-desc">
-                                    Built a location-aware, swipe-based job marketplace connecting college students with businesses offering flexible shifts. Features include radius-based job matching, role-based access, business verification workflows, and a reputation system designed to improve trust between students and employers.
+                                    Built a location-aware, swipe-based job marketplace connecting college students with
+                                    businesses offering flexible shifts. Features include radius-based job matching,
+                                    role-based access, business verification workflows, and a reputation system designed
+                                    to improve trust between students and employers.
                                 </p>
                                 <div class="feature-tags-list">
                                     <span class="feature-tag-item">Location-Based Job Matching</span>
@@ -431,7 +449,7 @@
                         </ul>
                     </div>
 
-                    <!-- <div class="experience-card reveal-on-scroll stagger-2">
+                    <div class="experience-card reveal-on-scroll stagger-2">
                         <div class="experience-header">
                             <h3 class="experience-role">Python Developer Intern</h3>
                             <span class="experience-date">July 2024 – Sept 2024</span>
@@ -445,7 +463,7 @@
                             <li>Utilized Git version control, Postman API testing, and agile team workflow practices.
                             </li>
                         </ul>
-                    </div> -->
+                    </div>
                 </div>
             </div>
         </section>
@@ -644,8 +662,9 @@
                         <div class="contact-buttons">
                             <a href="mailto:vikashch97600@gmail.com" class="btn primary">EMAIL ME <span
                                     class="arrow">→</span></a>
-                            <a href="https://wa.me/919372483191?text=Hi%20Vikash,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect." target="_blank" rel="noopener"
-                                class="btn secondary"><i class="fa-brands fa-whatsapp"></i> WHATSAPP <span class="arrow">→</span></a>
+                            <a href="https://wa.me/919372483191?text=Hi%20Vikash,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect."
+                                target="_blank" rel="noopener" class="btn secondary"><i
+                                    class="fa-brands fa-whatsapp"></i> WHATSAPP <span class="arrow">→</span></a>
                             <a href="https://www.linkedin.com/in/vikash97600/" target="_blank" rel="noopener"
                                 class="btn secondary">LINKEDIN <span class="arrow">→</span></a>
                             <a href="https://github.com/Vikash97600" target="_blank" rel="noopener"
@@ -662,13 +681,15 @@
 
                         <div class="form-group">
                             <label for="name">Your Name</label>
-                            <input type="text" id="name" name="name" placeholder="John Doe" required autocomplete="name">
+                            <input type="text" id="name" name="name" placeholder="John Doe" required
+                                autocomplete="name">
                             <span class="field-error" id="nameError">Please enter your name.</span>
                         </div>
 
                         <div class="form-group">
                             <label for="email">Your Email</label>
-                            <input type="email" id="email" name="email" placeholder="john@example.com" required autocomplete="email">
+                            <input type="email" id="email" name="email" placeholder="john@example.com" required
+                                autocomplete="email">
                             <span class="field-error" id="emailError">Please enter a valid email address.</span>
                         </div>
 
@@ -683,7 +704,8 @@
                             <span class="btn-text">SEND MESSAGE</span> <span class="arrow">→</span>
                         </button>
 
-                        <div id="contactStatus" class="contact-status" role="status" aria-live="polite" style="display: none;"></div>
+                        <div id="contactStatus" class="contact-status" role="status" aria-live="polite"
+                            style="display: none;"></div>
                     </form>
                 </div>
             </div>
@@ -713,12 +735,303 @@
                 <div class="footer-nav">
                     <a href="https://github.com/Vikash97600" target="_blank" rel="noopener">GitHub</a>
                     <a href="https://www.linkedin.com/in/vikash97600/" target="_blank" rel="noopener">LinkedIn</a>
-                    <a href="https://wa.me/919372483191?text=Hi%20Vikash,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect." target="_blank" rel="noopener">WhatsApp</a>
+                    <a href="https://wa.me/919372483191?text=Hi%20Vikash,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect."
+                        target="_blank" rel="noopener">WhatsApp</a>
                     <a href="mailto:vikashch97600@gmail.com">Email</a>
                 </div>
             </div>
         </div>
     </footer>
+
+    <!-- ==========================================================================
+         60-SECOND RECRUITER SNAPSHOT MODAL (EXECUTIVE DIGEST)
+         ========================================================================== -->
+    <div class="recruiter-modal-overlay" id="recruiterModal" aria-hidden="true" role="dialog"
+        aria-labelledby="digestModalTitle">
+        <div class="recruiter-modal-backdrop" id="recruiterBackdrop"></div>
+        <div class="recruiter-modal-container">
+            <!-- Modal Header -->
+            <div class="recruiter-modal-header">
+                <div class="header-left">
+                    <!-- Desktop Header Content -->
+                    <div class="desktop-header-content">
+
+                        <h2 id="digestModalTitle" class="digest-headline">Vikash R. Chaurasiya</h2>
+                        <p class="digest-subheading">
+                            <span class="role-highlight">Python Backend Developer</span> · REST APIs · Relational
+                            Databases · Practical AI Systems
+                        </p>
+                    </div>
+                    <!-- Mobile Compact Header Bar -->
+                    <div class="mobile-header-bar">
+                        <span class="mobile-bar-icon">⚡</span>
+                        <span class="mobile-bar-title">Recruiter Digest</span>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="availability-badge">
+                        <span class="status-dot"></span>
+                        <span>Open for Immediate Opportunities</span>
+                    </div>
+                    <a href="Vikash resume.pdf" target="_blank" class="mobile-header-resume-btn"
+                        aria-label="Download Resume PDF">
+                        <i class="fa-solid fa-file-arrow-down"></i> <span>Resume</span>
+                    </a>
+                    <button class="modal-close-icon" id="recruiterModalClose" aria-label="Close Recruiter Digest">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Modal Content (Scrollable) -->
+            <div class="recruiter-modal-body">
+                <!-- Mobile Candidate Intro Hero (visible on mobile only) -->
+                <div class="mobile-digest-hero">
+                    <div class="mobile-hero-meta">
+                        <span class="digest-pill"><span class="zap-icon">⚡</span> EXECUTIVE SNAPSHOT</span>
+                        <span class="availability-badge-mobile">
+                            <span class="status-dot"></span>
+                            <span>Immediate Joiner</span>
+                        </span>
+                    </div>
+                    <h2 class="mobile-hero-name">Vikash R. Chaurasiya</h2>
+                    <p class="mobile-hero-role">
+                        <span class="role-highlight">Python Backend Developer</span> · REST APIs · Relational Databases
+                        · Practical AI Systems
+                    </p>
+                    <div class="mobile-quick-actions">
+                        <a href="Vikash resume.pdf" target="_blank" class="mobile-quick-cta primary">
+                            <i class="fa-solid fa-file-arrow-down"></i> Resume PDF
+                        </a>
+                        <a href="https://wa.me/919372483191?text=Hi%20Vikash,%20I%20reviewed%20your%2060-second%20recruiter%20digest%20and%20would%20like%20to%20connect%20regarding%20an%20opportunity."
+                            target="_blank" rel="noopener" class="mobile-quick-cta whatsapp">
+                            <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                        </a>
+                        <a href="mailto:vikashch97600@gmail.com?subject=Opportunity%20Discussion%20-%20Vikash%20Chaurasiya"
+                            class="mobile-quick-cta email">
+                            <i class="fa-solid fa-envelope"></i> Email
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Fast-Facts Quick Signals Matrix -->
+                <div class="digest-matrix-grid">
+                    <div class="matrix-card">
+                        <div class="matrix-label"><i class="fa-solid fa-code"></i> CORE STACK</div>
+                        <div class="matrix-value">Python · Django · REST APIs · MySQL · PostgreSQL</div>
+                    </div>
+                    <div class="matrix-card">
+                        <div class="matrix-label"><i class="fa-solid fa-graduation-cap"></i> EDUCATION</div>
+                        <div class="matrix-value">MCA (TIMSCDR, 2025–27) · BCA (TMV, 8.17 CGPA)</div>
+                    </div>
+                    <div class="matrix-card">
+                        <div class="matrix-label"><i class="fa-solid fa-trophy"></i> RECOGNITION</div>
+                        <div class="matrix-value">1st Place GenAI Ignite '26 · Avishkar Research Finalist</div>
+                    </div>
+                    <div class="matrix-card">
+                        <div class="matrix-label"><i class="fa-solid fa-location-dot"></i> LOCATION</div>
+                        <div class="matrix-value">Mumbai, Maharashtra · Open to Remote & Relocation</div>
+                    </div>
+                </div>
+
+                <!-- Section: Top 3 Flagship Projects with Quantified Impact -->
+                <div class="digest-section">
+                    <div class="section-title-strip">
+                        <span class="section-index">01</span>
+                        <h3>Top 3 Flagship Projects (With Measured Impact)</h3>
+                    </div>
+
+                    <div class="digest-projects-list">
+                        <!-- Project 1: Panchayat -->
+                        <div class="digest-project-item">
+                            <div class="project-item-top">
+                                <div>
+                                    <h4 class="item-title">1. PANCHAYAT — AI-Powered Housing Society Management</h4>
+                                    <div class="item-stack">Python · Django · MySQL · Google Gemini API · REST APIs
+                                    </div>
+                                </div>
+                                <div class="item-links">
+                                    <a href="projects/panchayat.html" class="quick-link">Case Study →</a>
+                                    <a href="https://github.com/Vikash97600/Panchayat-housing-society" target="_blank"
+                                        rel="noopener" class="quick-link">GitHub →</a>
+                                </div>
+                            </div>
+                            <div class="impact-metrics-strip">
+                                <span class="metric-pill"><strong>10+</strong> Smart Modules</span>
+                                <span class="metric-pill"><strong>4</strong> User Roles (RBAC)</span>
+                                <span class="metric-pill"><strong>1000+</strong> Residents Supported</span>
+                                <span class="metric-pill"><strong>70%+</strong> Efficiency Improvement</span>
+                            </div>
+                            <p class="item-desc">
+                                Engineered a full-stack platform managing society workflows with custom 4-role RBAC.
+                                Automated resident complaint triage and categorization by constraining LLM responses to
+                                strict JSON schemas to guarantee zero parsing errors; integrated multilingual voice
+                                bylaw querying and visitor gatepass verification.
+                            </p>
+                        </div>
+
+                        <!-- Project 2: SHIFTLY -->
+                        <div class="digest-project-item">
+                            <div class="project-item-top">
+                                <div>
+                                    <h4 class="item-title">2. SHIFTLY — Location-Based, Swipe-to-Hire Part-Time Job
+                                        Marketplace</h4>
+                                    <div class="item-stack">Python · Django · MySQL · Bootstrap 5 · JavaScript</div>
+                                </div>
+                                <div class="item-links">
+                                    <a href="projects/shiftly.html" class="quick-link">Case Study →</a>
+                                    <a href="https://github.com/Vikash97600/SHIFTLY" target="_blank" rel="noopener"
+                                        class="quick-link">GitHub →</a>
+                                </div>
+                            </div>
+                            <div class="impact-metrics-strip">
+                                <span class="metric-pill"><strong>Radius-Based</strong> Matching Engine</span>
+                                <span class="metric-pill"><strong>Dual Trust</strong> Reputation Scoring</span>
+                                <span class="metric-pill"><strong>Admin Moderation</strong> Audit Trail</span>
+                                <span class="metric-pill"><strong>Multi-Tenant</strong> Separation</span>
+                            </div>
+                            <p class="item-desc">
+                                Built a location-aware hiring platform linking college students to nearby flexible
+                                shifts. Engineered server-side proximity calculation against custom business hiring
+                                radiuses, a multi-step enterprise verification workflow to prevent fraudulent job
+                                postings, and an immutable admin activity log.
+                            </p>
+                        </div>
+
+                        <!-- Project 3: LockVault -->
+                        <div class="digest-project-item">
+                            <div class="project-item-top">
+                                <div>
+                                    <h4 class="item-title">3. LOCKVAULT — Zero-Knowledge Client-Side Password Vault</h4>
+                                    <div class="item-stack">Web Crypto API · AES-256-GCM · PBKDF2 (100k) · WebAuthn ·
+                                        IndexedDB</div>
+                                </div>
+                                <div class="item-links">
+                                    <a href="https://lock-vault-phi.vercel.app/" target="_blank" rel="noopener"
+                                        class="quick-link primary-link">Live Demo →</a>
+                                    <a href="projects/lockvault.html" class="quick-link">Case Study →</a>
+                                    <a href="https://github.com/Vikash97600/LockVault" target="_blank" rel="noopener"
+                                        class="quick-link">GitHub →</a>
+                                </div>
+                            </div>
+                            <div class="impact-metrics-strip">
+                                <span class="metric-pill"><strong>100,000</strong> PBKDF2 Iterations</span>
+                                <span class="metric-pill"><strong>0 Bytes</strong> Server Data Footprint</span>
+                                <span class="metric-pill"><strong>Sub-100ms</strong> Crypto Operations</span>
+                                <span class="metric-pill"><strong>WebAuthn</strong> Biometric Passkeys</span>
+                            </div>
+                            <p class="item-desc">
+                                Architected a zero-knowledge credential vault executing entirely in browser memory. Key
+                                derivation via PBKDF2 SHA-256 with 100,000 rounds protects against offline brute-force,
+                                while WebAuthn biometric passkeys enable passwordless re-authentication with local
+                                encrypted IndexedDB persistence.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section: Complete Technical Capabilities Matrix -->
+                <div class="digest-section">
+                    <div class="section-title-strip">
+                        <span class="section-index">02</span>
+                        <h3>Technical Skills Taxonomy</h3>
+                    </div>
+                    <div class="skills-taxonomy-grid">
+                        <div class="taxonomy-col">
+                            <h5>Backend Engineering</h5>
+                            <div class="mini-pills">
+                                <span>Python (Advanced)</span>
+                                <span>Django</span>
+                                <span>Django REST Framework</span>
+                                <span>FastAPI (Foundational)</span>
+                                <span>Flask</span>
+                                <span>OOP / Design Patterns</span>
+                            </div>
+                        </div>
+                        <div class="taxonomy-col">
+                            <h5>Databases & ORM</h5>
+                            <div class="mini-pills">
+                                <span>MySQL</span>
+                                <span>PostgreSQL</span>
+                                <span>SQLite</span>
+                                <span>Django ORM</span>
+                                <span>Query Optimization</span>
+                                <span>Schema Modeling</span>
+                            </div>
+                        </div>
+                        <div class="taxonomy-col">
+                            <h5>AI, Security & APIs</h5>
+                            <div class="mini-pills">
+                                <span>LLM APIs (Gemini, Groq)</span>
+                                <span>Structured JSON Output</span>
+                                <span>Prompt Engineering</span>
+                                <span>Web Crypto (AES-256-GCM)</span>
+                                <span>Role-Based Access Control</span>
+                                <span>CSRF & Session Security</span>
+                            </div>
+                        </div>
+                        <div class="taxonomy-col">
+                            <h5>Tools, DevOps & Practices</h5>
+                            <div class="mini-pills">
+                                <span>Git & GitHub</span>
+                                <span>Postman API Testing</span>
+                                <span>Docker</span>
+                                <span>Netlify & Vercel</span>
+                                <span>VS Code</span>
+                                <span>Agile Collaboration</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section: Practical Experience & Internships -->
+                <div class="digest-section">
+                    <div class="section-title-strip">
+                        <span class="section-index">03</span>
+                        <h3>Experience & Internship Highlights</h3>
+                    </div>
+                    <div class="digest-exp-cards">
+                        <div class="digest-exp-item">
+                            <div class="exp-head">
+                                <strong>Python Backend & Web Developer (Independent)</strong>
+                                <span class="exp-period">2024 – Present</span>
+                            </div>
+                            <p>Engineered production-grade web systems, relational database models, and LLM-integrated
+                                automation pipelines (Django, MySQL, REST APIs).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer: High-Priority Fast Actions -->
+            <div class="recruiter-modal-footer">
+                <div class="footer-cta-text">
+                    Ready to schedule an interview or discuss a role?
+                </div>
+                <div class="footer-actions">
+                    <a href="Vikash resume.pdf" target="_blank" class="btn primary small">
+                        <i class="fa-solid fa-file-arrow-down"></i> DOWNLOAD RESUME
+                    </a>
+                    <a href="https://wa.me/919372483191?text=Hi%20Vikash,%20I%20reviewed%20your%2060-second%20recruiter%20digest%20and%20would%20like%20to%20connect%20regarding%20an%20opportunity."
+                        target="_blank" rel="noopener" class="btn secondary small">
+                        <i class="fa-brands fa-whatsapp"></i> WHATSAPP
+                    </a>
+                    <a href="mailto:vikashch97600@gmail.com?subject=Opportunity%20Discussion%20-%20Vikash%20Chaurasiya"
+                        class="btn secondary small">
+                        <i class="fa-solid fa-envelope"></i> EMAIL
+                    </a>
+                    <a href="https://www.linkedin.com/in/vikash97600/" target="_blank" rel="noopener"
+                        class="btn outline small">
+                        <i class="fa-brands fa-linkedin"></i> LINKEDIN
+                    </a>
+                    <button type="button" class="btn outline small" id="copySummaryBtn"
+                        title="Copy 1-paragraph summary for applicant tracking">
+                        <i class="fa-regular fa-copy"></i> <span id="copyBtnText">COPY SUMMARY</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Floating Back to Top Button -->
     <button class="back-to-top" id="backToTop" aria-label="Scroll to top">

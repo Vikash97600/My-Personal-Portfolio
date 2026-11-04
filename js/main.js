@@ -521,4 +521,86 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
+
+    // ==========================================================================
+    // 7. 60-SECOND RECRUITER DIGEST MODAL ENGINE
+    // ==========================================================================
+
+    const recruiterModal = document.getElementById('recruiterModal');
+    const recruiterNavBtn = document.getElementById('recruiterDigestNavBtn');
+    const recruiterMobileQuickBtn = document.getElementById('recruiterDigestMobileQuickBtn');
+    const recruiterHeroBtn = document.getElementById('recruiterDigestHeroBtn');
+    const recruiterHeroActionBtn = document.getElementById('recruiterDigestHeroActionBtn');
+    const recruiterCloseBtn = document.getElementById('recruiterModalClose');
+    const recruiterBackdrop = document.getElementById('recruiterBackdrop');
+    const copySummaryBtn = document.getElementById('copySummaryBtn');
+    const copyBtnText = document.getElementById('copyBtnText');
+
+    function openRecruiterModal() {
+        if (!recruiterModal) return;
+        recruiterModal.classList.add('is-active');
+        recruiterModal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+    }
+
+    function closeRecruiterModal() {
+        if (!recruiterModal) return;
+        recruiterModal.classList.remove('is-active');
+        recruiterModal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+    }
+
+    if (recruiterNavBtn) recruiterNavBtn.addEventListener('click', openRecruiterModal);
+    if (recruiterMobileQuickBtn) recruiterMobileQuickBtn.addEventListener('click', openRecruiterModal);
+    if (recruiterHeroBtn) recruiterHeroBtn.addEventListener('click', openRecruiterModal);
+    if (recruiterHeroActionBtn) recruiterHeroActionBtn.addEventListener('click', openRecruiterModal);
+    if (recruiterCloseBtn) recruiterCloseBtn.addEventListener('click', closeRecruiterModal);
+    if (recruiterBackdrop) recruiterBackdrop.addEventListener('click', closeRecruiterModal);
+
+    // Keyboard Escape Key Closes Modal
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && recruiterModal && recruiterModal.classList.contains('is-active')) {
+            closeRecruiterModal();
+        }
+    });
+
+    // Fast-Copy Recruiter Summary for ATS / Slack
+    if (copySummaryBtn) {
+        copySummaryBtn.addEventListener('click', function () {
+            const summaryText = "Vikash R. Chaurasiya — Python Backend Developer (Django, REST APIs, MySQL, AI Integrations). MCA candidate at TIMSCDR (University of Mumbai), BCA CGPA 8.17. Flagship systems: Panchayat (Housing Society platform with AI core, 1000+ residents), SHIFTLY (location-based swipe job marketplace), and LockVault (zero-knowledge password vault). Open for immediate opportunities. Email: vikashch97600@gmail.com | Phone/WhatsApp: +91 9372483191 | Portfolio: https://vikash-personal-portfolio.netlify.app/";
+
+            const setCopiedUI = () => {
+                if (copyBtnText) copyBtnText.textContent = 'COPIED!';
+                copySummaryBtn.classList.add('btn-copied');
+                setTimeout(() => {
+                    if (copyBtnText) copyBtnText.textContent = 'COPY SUMMARY';
+                    copySummaryBtn.classList.remove('btn-copied');
+                }, 2200);
+            };
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(summaryText).then(setCopiedUI).catch(() => {
+                    fallbackCopy(summaryText, setCopiedUI);
+                });
+            } else {
+                fallbackCopy(summaryText, setCopiedUI);
+            }
+        });
+    }
+
+    function fallbackCopy(text, callback) {
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-9999px';
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+            document.execCommand('copy');
+            if (callback) callback();
+        } catch (err) {
+            console.warn('Fallback copy failed:', err);
+        }
+        document.body.removeChild(textArea);
+    }
 });
